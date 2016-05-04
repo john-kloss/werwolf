@@ -1,14 +1,16 @@
 ﻿Anfoderungen
 
-Problem
-Lösung
+
 Spielleiter wird benötigt
 Wird durch App ersetzt
+
 Eigene Identität geheim halten
 Spieler halten während Nachtphase Augen geschlossen
+
 Eigene Rolle verstehen
 Karte mit Regelerläuterung wird zu Spielbeginn angezeigt
 bleibt während des Spiels (zusammen mit Regeln) aufrufbar
+
 Phasen in Nacht 
 -rollenspezifische Displayanzeige in Nachtphase
 -Laufen nacheinander ab
@@ -17,26 +19,38 @@ Phasen in Nacht
 -Handybildschirm von diesem Spieler geht automatisch an
 -er führt Aktion aus (Auswahl einer Person per Klick)
 -Handybildschirm geht automatisch wieder aus und nächste Phase wird per Lautsprecher angekündigt
+-am Ende der Nacht werden die Opfer verkündet und angezeigt
+
 Tag und Nachtphase
 -Sollen getrennt bleiben
 -farblich unterscheiden → Nacht = dunkle Farben, Tag = helle Farben
+
 Informationsverbreitung an alle (sterben, Phasen,..)
 Handy vibriert und zeigt News an
+
 Eigene Karten hinzufügen
 Unmöglich, da Regeln implementiert werden müssten, wenn es keinen Spielleiter gibt
 Aber: wir implementieren noch zusätzliche Karten
+
 Informationsaustausch
 Möglichkeit, Spieler zu markieren/taggen
 mit anderen Spielern teilen
+
 Spiel teilen
-QR-Code scannen (O(log(n)))
-Anzeige von Spielen im lokalen WLAN-Netz
+-QR-Code scannen
+-Anzeige von Spielen im lokalen WLAN-Netz
+
 Abstimmung am Tag
--Es wird geredet und gleichzeitig abgestimmt – sobald ein bestimmter Prozentsatz überschritten wird, ist Abstimmung beendet
+-Es wird geredet und gleichzeitig abgestimmt – sobald ein bestimmter Prozentsatz überschritten wird, ist Abstimmung beendet und jemand stirbt
 -Live Abstimmungsergebnisse anzeigen
 -alle Displayanzeigen sind gleich
+-Möglichkeit ein zeitliches Limit zu setzen
+
 App hat zu wenig Mehrwert
 Karten aus Neumonderweiterung einbinden (zufällige Ereignisse treten zu Tagesbeginn auf)
+
+gestorbene Spieler
+führen weiterhin Aktionen aus, haben aber keinen Effekt mehr
 
 
 
@@ -51,21 +65,27 @@ Karten aus Neumonderweiterung einbinden (zufällige Ereignisse treten zu Tagesbe
 Amor
 Wählt zwei Personen, die sich ineinander verlieben (sterben zusammen)
 diese werden per Markierung informiert
+
 Seherin
 Wählt Person, deren Identität sie erfahren möchte
 Identität wird angezeigt
+
 Werwölfe
 Wählen per Mehrheitsentscheid eine Person, die sie töten möchten
 aktueller Stand wird live angezeigt
+
 Hexe
 Bekommt Opfer der Nacht angezeigt
 Wählt, ob sie das Opfer mit Heiltrank retten will
 Wählt, ob sie Gifttrank verwenden möchte
 Wenn ja, wählt sie einen Spieler aus, der sterben soll
+
 Mädchen
 Darf bei Werwölfen blinzeln
+
 Dieb
 Wechselt zu Anfang des Spiels in der ersteten Nachtphase seine Identität
+
 Jäger
 Wählt eine Person, die auch stirbt, sobald er selbst stirbt
 Zusätzliche Rollen (Neumond)
