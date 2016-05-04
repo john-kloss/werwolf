@@ -2,22 +2,24 @@
 
 Problem
 Lösung
-Spielleiter ersetzen
+Spielleiter wird benötigt
+Wird durch App ersetzt
+Eigene Identität geheim halten
 Spieler halten während Nachtphase Augen geschlossen
-Eigene Identität
+Eigene Rolle verstehen
 Karte mit Regelerläuterung wird zu Spielbeginn angezeigt
 bleibt während des Spiels (zusammen mit Regeln) aufrufbar
-spezifische Displayanzeige in Nachtphase
 Phasen in Nacht 
-Laufen nacheinander ab
-Stimmausgabe über Lautsprecher kündigt Phasen an
-Aufgerufener Spieler erwacht
-Handybildschirm von diesem Spieler geht automatisch an
-er führt Aktion aus (Auswahl einer Person per Klick)
-Handybildschirm geht automatisch wieder aus und nächste Phase wird per Lautsprecher angekündigt
+-rollenspezifische Displayanzeige in Nachtphase
+-Laufen nacheinander ab
+-Stimmausgabe über Lautsprecher kündigt Phasen an
+-Aufgerufener Spieler erwacht
+-Handybildschirm von diesem Spieler geht automatisch an
+-er führt Aktion aus (Auswahl einer Person per Klick)
+-Handybildschirm geht automatisch wieder aus und nächste Phase wird per Lautsprecher angekündigt
 Tag und Nachtphase
-Sollen getrennt bleiben
-farblich unterscheiden → Nacht = dunkle Farben, Tag = helle Farben
+-Sollen getrennt bleiben
+-farblich unterscheiden → Nacht = dunkle Farben, Tag = helle Farben
 Informationsverbreitung an alle (sterben, Phasen,..)
 Handy vibriert und zeigt News an
 Eigene Karten hinzufügen
@@ -30,11 +32,22 @@ Spiel teilen
 QR-Code scannen (O(log(n)))
 Anzeige von Spielen im lokalen WLAN-Netz
 Abstimmung am Tag
-Es wird geredet und gleichzeitig abgestimmt – sobald ein bestimmter Prozentsatz überschritten wird, ist Abstimmung beendet
-Live Abstimmungsergebnisse anzeigen
-alle Displayanzeigen sind gleich
+-Es wird geredet und gleichzeitig abgestimmt – sobald ein bestimmter Prozentsatz überschritten wird, ist Abstimmung beendet
+-Live Abstimmungsergebnisse anzeigen
+-alle Displayanzeigen sind gleich
 App hat zu wenig Mehrwert
 Karten aus Neumonderweiterung einbinden (zufällige Ereignisse treten zu Tagesbeginn auf)
+
+
+
+
+
+
+
+
+
+
+
 Amor
 Wählt zwei Personen, die sich ineinander verlieben (sterben zusammen)
 diese werden per Markierung informiert
@@ -58,4 +71,6 @@ Wählt eine Person, die auch stirbt, sobald er selbst stirbt
 Zusätzliche Rollen (Neumond)
 Werden auch implementiet
 
-B�rgermeister!!!!!!
+Bürgermeister
+Gewinnt bei stimmgleichheit am Tag
+zusätzliche Rolle
