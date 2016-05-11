@@ -38,7 +38,7 @@ mit anderen Spielern teilen
 
 Spiel teilen
 -QR-Code scannen
--Anzeige von Spielen im lokalen WLAN-Netz
+//-Anzeige von Spielen im lokalen WLAN-Netz
 
 Abstimmung am Tag
 -Es wird geredet und gleichzeitig abgestimmt – sobald ein bestimmter Prozentsatz überschritten wird, ist Abstimmung beendet und jemand stirbt
@@ -47,17 +47,13 @@ Abstimmung am Tag
 -Möglichkeit ein zeitliches Limit zu setzen
 
 App hat zu wenig Mehrwert
-Karten aus Neumonderweiterung einbinden (zufällige Ereignisse treten zu Tagesbeginn auf)
+-keine Karten benötigt
+-kein Spielleiter benötigt
+-viele verschiedene Rollen werden implementiert
+-Karten aus Neumonderweiterung einbinden (zufällige Ereignisse treten zu Tagesbeginn auf)
 
-gestorbene Spieler
-führen weiterhin Aktionen aus, haben aber keinen Effekt mehr
-
-
-
-
-
-
-
+Nebenaktivitäten
+-sind möglich, da Funktionen per Handy erledigt werden können
 
 
 
@@ -94,3 +90,34 @@ Werden auch implementiet
 Bürgermeister
 Gewinnt bei stimmgleichheit am Tag
 zusätzliche Rolle
+
+
+Augen zu
+Vorteile
+Nachteile
+Einfacher umzusetzen
+Schummeln
+Grundsätzliche Spielidee bleibt erhalten
+Könnte langweilen
+Stimmung
+
+Kommunkation während der Nachtphase
+
+Verdächtigungen aufgrund von Geräuschen .o.ä.
+
+Spiel bereits erfolgreich + Bekanntheitsgrad
+
+Regeln bereits bekannt
+
+Augen auf
+Vorteile
+Nachteile
+Mehrwert
+Deutlich komplexer
+Schummeln ist komplizierter
+Kompliziertere Regeln
+
+Keine Argumente
+
+Höherer Akkuverbrauch
+
