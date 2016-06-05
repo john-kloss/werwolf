@@ -1,5 +1,21 @@
 ﻿1. Webserver
-auf Android Gerät
+
+own server: champp
+	on http://localhost/phpmyadmin
+tutorial: http://www.androidhive.info/2012/05/how-to-connect-android-with-php-mysql/
+
+
+Eventuell eigener server?
+https://help.ubuntu.com/14.04/serverguide/installing-from-cd.html
+
+
+Funktionsweise:
+- mithilfe eines PHP Scripts wird eine SQL-Datenbank erstellt
+- Datenaustausch erfolgt mithilfe eines HTTP-Request des Android Geräts
+- dargestellt wird das ganze durch JSON
+
+
+(auf Android Gerät)
 https://play.google.com/store/apps/details?id=ru.kslabs.ksweb
 
 HttpClient client = new DefaultHttpClient();
