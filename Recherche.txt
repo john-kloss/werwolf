@@ -1,0 +1,33 @@
+Youtube - Tutorials:
+
+https://www.youtube.com/watch?v=Cq_dtt4RdM8 // Datenbank in AndroidStudio erstellen 
+https://www.youtube.com/watch?v=QSSlU9CdJr0&list=PLY0B5SBqjDz8Cj1IR8NXZhXMNjRg7wwyn&index=11#t=510.514716 // Shared Preferences
+https://www.youtube.com/watch?v=ZxJiiPRnt24 // Text an Server senden und empfangen
+https://www.youtube.com/watch?v=x9lzmFfnjKI // Datei auf Server hochladen #1 (Grundlagen der App + PHP - Script)
+https://www.youtube.com/watch?v=-1535u8mFZY // Datei auf Server hochladen #2 (Hochladen an sich)
+
+weitere Tutorials (Datenbank):
+http://www.programmierenlernenhq.de/android-sqlite-projekt-in-android-studio-anlegen/  			// Erstellen des SQLite Datenbank Projekts in Android Studio
+http://www.programmierenlernenhq.de/sqlite-datenbank-in-android-app-integrieren/  				// Datenbank integrieren
+http://www.programmierenlernenhq.de/tabelle-in-sqlite-datenbank-erstellen-in-android/  			// Tabelle in Datenbank erstellen
+http://www.programmierenlernenhq.de/daten-in-sqlite-datenbank-schreiben-und-lesen-in-android/  	// Daten in Datenbank schreiben und auslesen
+http://www.programmierenlernenhq.de/mit-sqlite-app-auf-benutzereingaben-reagieren-in-android/	// aus Benutzereingaben (Text, Button,...) reagieren
+http://www.programmierenlernenhq.de/daten-aus-sqlite-datenbank-loeschen-in-android/				// Daten löschen
+http://www.programmierenlernenhq.de/daten-in-sqlite-datenbank-aendern-in-android/				// Daten ändern
+http://www.programmierenlernenhq.de/sqlite-datenbank-upgrade-in-android/						// Datenbank upgraden 
+
+weitere Tutorials (Bilder):
+http://www.codepool.biz/take-a-photo-from-android-camera-and-upload-it-to-a-remote-php-server.html		// Bild aufnehmen und auf Server laden
+http://fraunerd.de/wie-du-per-button-ein-bild-in-einer-app-anzeigen-kannst/								// Bild per Buttondruck anzeigen lassen (vllt. für Seherin?)
+
+QR Code generieren:
+http://stackoverflow.com/questions/22371626/android-generate-qr-code-and-barcode-using-zxing
+http://smartandroiddeveloper.com/2016/01/29/how-to-generate-qrcode-in-10-minutes-using-zxing-library-in-android-studio/
+http://goqr.me/de/api/doc/create-qr-code/
+
+QR Code lesen:
+http://code.tutsplus.com/tutorials/reading-qr-codes-using-the-mobile-vision-api--cms-24680
+http://goqr.me/de/api/doc/read-qr-code/
+
+QR Code allgemein:
+http://qrcode.wilkohartz.de/
