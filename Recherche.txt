@@ -5,6 +5,8 @@ https://www.youtube.com/watch?v=QSSlU9CdJr0&list=PLY0B5SBqjDz8Cj1IR8NXZhXMNjRg7w
 https://www.youtube.com/watch?v=ZxJiiPRnt24 // Text an Server senden und empfangen
 https://www.youtube.com/watch?v=x9lzmFfnjKI // Datei auf Server hochladen #1 (Grundlagen der App + PHP - Script)
 https://www.youtube.com/watch?v=-1535u8mFZY // Datei auf Server hochladen #2 (Hochladen an sich)
+https://www.youtube.com/watch?v=7vPCmJn_XFk  // Datenbank erstellen und Werte einfügen
+https://www.youtube.com/watch?v=R_JXvlvWpqM#t=316.228049 // auf Daten in Datenbank zugreifen 
 
 weitere Tutorials (Datenbank):
 http://www.programmierenlernenhq.de/android-sqlite-projekt-in-android-studio-anlegen/  			// Erstellen des SQLite Datenbank Projekts in Android Studio
@@ -31,3 +33,9 @@ http://goqr.me/de/api/doc/read-qr-code/
 
 QR Code allgemein:
 http://qrcode.wilkohartz.de/
+
+Bildschrimhelligkeit anpassen:
+http://maheo.eu/486-android-display-helligkeit-im-eigenen-programm-aendern.php
+
+Bildschirm schaltet sich nicht selbst ab:
+http://www.android-hilfe.de/thema/display-ausschalten-verhindern.274818/
