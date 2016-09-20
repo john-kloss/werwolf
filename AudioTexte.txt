@@ -1,0 +1,37 @@
+1. Nacht:
+	Auf der zerklüfteten Hochebene des Hunsrücks liegt das kleine Dörfchen Düsterwald.
+	Seit einiger Zeit wird das Dorf jede Nacht von Werwölfen heimgesucht. 
+	Wer wird ihnen wohl diesmal zum Opfer fallen?
+	Die Nacht zieht über euer Dorf herein und das ganze Dorf schläft ein.
+
+Dieb:
+	Es erwache nun der Dieb, um sich eine Neue Identität zu stibitzen und dem Gefängnis zu entfliehen.
+
+	Der Dieb hat seine Wahl getroffen und schläft wieder ein.
+
+
+Amor:
+	Nun erwache Amor, damit er mit seinem Bogen und seinen Herzpfeilen für die Liebe im Düsterwald sorgen kann. 
+	
+	Amor hat ein Liebespaar erwählt und schläft wieder ein.
+
+Wölfe:
+	Im Angesicht des Vollmondes erwachen die Werwölfe, um über einen wehrlosen Dorfbewohner herzufallen.
+
+	Nach einer langen Nacht schlafen die Werwölfe wieder ein.
+
+Seherin:
+	Es erwache nun die Seherin und werfe eine Blick in Ihre treue Kristallkugel.
+	Diese verrät ihr zuverlässig die Idenität eines Dorfbewohners.
+	
+	Und die Seherin schläft wieder ein.
+
+Hexe:
+	Hexe erwache und lasse deine Magie walten. Wirst du einen Unschuldigen vor dem Tode bewahren oder einen Feind aus dem 	Weg räumen?
+
+	Nun, Hexe, schlafe wieder ein.
+
+Tag:
+	Die Sonne geht auf und das ganze Dorf erwacht.
+	
+	Die Nacht zieht über euer Dorf herein und das ganze Dorf schläft ein.
