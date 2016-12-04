@@ -135,6 +135,7 @@ und setzt diese automatisch.
 Alle teilnehmenden Rollen werden in das cards-Array geschrieben, welches anschließend gemischt wird
 und das cardsShuffled-Array entsteht.
 Die für das Spiel benötigten Phasen werden gesammelt und die createGameDB() wird ausgeführt.
+Die Phasen sowie die Rollen werden in die Datenbank geschrieben.
 Nach erfolgreicher Erstellung des Spiels in der Datenbank wird die {@link QRCodeActivity}
 aufgerufen.
 Der erstellende Spieler ist der Spielleiter.
@@ -143,34 +144,103 @@ Der erstellende Spieler ist der Spielleiter.
 
 Diese Activity erzeugt aus der gameID des erstellten Spiels einen QR-Code der von anderen Spielern
 gescannt werden muss, um dem Spiel beizutreten.
-Anschließend wird die {@link LetsPlayActivity} aufgerufen.
+Sobald alle Spieler dem Spiel beigetreten sind, wird die {@link LetsPlayActivity} aufgerufen.
 
 = LetsPlayActivity =
+
+Mit Aufruf der Activity werden alle PlayerIds, Namen und Bilder auf das Gerät aus der Datenbank
+geladen.
+Anschließend wird das Beginn des Spiels mit einem Audio angekündigt und die GameActivity 
+wird aufgerufen.
 
 
 = JoinGameActivity =
 
 In dieser Activity kann der Spieler einen, auf einem anderen Handy erzeugten, QR-Code scannen.
+Dieser codiert die entsprechende GameId für das Spiel, dem beigetreten werden soll.
+Mithilfe dieser Information wird in der Datenbank der Spieler dem Spiel hinzugefügt.
 Anschließend wird {@link GetRole} aufgerufen. Die eigene Rolle wird aus der Datenbank angefragt
 und angezeigt.
-Sobald alle Spieler dem Spiel beigetreten sind, beginnt das Spiel automatisch.
 
 
 = GameActivity =
 
+Diese Activity ist die Grundlage für alle kommenden Spielphasen.
+Die createObjects-Methode ist für die Erstellung aller benötigten Darstellungselemte zuständig.
+Das Display wird zunächst in vier Layouts geteilt, die nach und nach (je nach Anzahl der Spieler)
+mit PlayerButtons befüllt werden.
+Durch einen langen Klick, kann das dazugehörige Spielerbild angezeigt werden.
+Spielerbuttons von toten Spielern sind nicht anwählbar.
+Die Methode playerSelected wird von einem Button bei einem aufgerufen und ist dafür zuständig
+die aktuelle Auswahl visuell darzustellen.
+Nach dem erstellen der benötigten Elemente wird getCurrentPhase aufgerufen. Diese Methode checkt,
+ob eine neue Phase aktiv geworden ist und ruft die dementsprechende Activity auf.
+
+Das Spielleitergerät kündigt die jeweils folgende Phase an.
+Zu Beginn einer RollenActivity wird kontrolliert, ob der entsprechende Spieler erwachen soll oder
+nicht. Die Displays der Spieler mit den richtigen Rollen gehen an und Aktionen können ausgeführt
+werden.
+
+Sollte eine einzeln aufgerufene Rolle bereits gestorben sein, passiert nichts und nach einer
+gewissen Zeit wird automatisch in die nächste Phase geschaltet.
+
 = DiebActivity =
+
+Aus der Activity werden zuerst die beiden übrig gebliebenen Rollen aus der Datenbank geladen.
+Diese werden zusammen mit dem entsprechenden Bild und der Beschreibung auf zwei Buttons dargestellt.
+Nachdem sich der Spieler für eine Rolle entschieden hat, wird die Auswahl in den globalen Variablen
+sowie in der Datenbank gespeichert.
+Die nächste Phase wird aufgerufen.
 
 = AmorActivity =
 
+Amor hat die Möglichkeit die beiden Personen zu bestimmen, die sich ineinander verlieben.
+Diese werden in der Datenbank mit ihrem jeweiligen Liebespartner abgespeichert.
+Anschließend wird die nächste Phase aufgerufen.
+
 = LoverActivity =
+
+Zuerst erwachen alle Spieler und sehen auf ihrem Display, ob sie in eine andere Person verliebt sind.
+Sollte das nicht der Fall sein, schlafen sie wieder ein, sodass nur noch die beiden Verliebten wach 
+sind und sich gegenseitig erkennen.
+Zum Schluss schlafen auch sie wieder ein und die nächste Phase wird aufgerufen
 
 = WerwolfActivity =
 
+In dieser Phase erwachen die Werwölfe und wählen per Klick auf einen Button ihr Opfer.
+Die Auswahl wird in der Datenbank vermerkt. Das Gerät des Spielleiters kontrolliert regelmäßig,
+ob alle Wölfe ihre Stimme abgegeben haben. Sollte dies der Fall sein, wird der Spieler mit den meisten
+Stimmen als {@link opferWer} in der Datenbank gespeichert.
+Anschließend wird die nächste Phase aufgerufen.
+
 = SeherinActivity =
+
+Die Seherin klickt auf einen Playerbutton und bekommt angezeigt, ob die gewählte Person gut (kein
+Werwolf) oder böse (kein Werwolf) ist.
+Anschließend wird die nächste Phase aufgerufen.
 
 = HexeActivity =
 
+Zuerst bekommt die Hexe angezeigt, wer das Opfer der Werwölfe ist.
+Sollte sie noch einen Heiltrank zur Verfügung haben, hat sie die Wahl, ob sie das Opfer retten möchte. 
+Dies wird mithilfe der databaseCon in der Datenbank gespeichert.
+Sollte sie noch einen Giftrank zur Verfügung haben, wird gefragt, ob sie diesen verwenden möchte.
+Wenn sie sich dafür entscheidet, darf sie einen Spieler auswählen, der sterben soll.
+Andernfalls wird die nächste Phase aufgerufen.
+Auch diese Wahl wird mithilfe der databaseCon in der Datenbank gespeichert.
+
 = showVictimActivity =
+
+In dieser Activity werden die Opfer angezeigt.
+Mögliche Gründe dafür sind die Abstimmung der Dorfbewohner am Tag, die Wahl der Werwölfe in der
+Nacht, der Gifttrank der Hexe, der Schuss des Jägers oder ein gestorbener Liebender.
+Nach einer gewissen Zeit wird automatisch die nächste Phase aufgerufen.
 
 = TagActivity =
 
+Am Tag erwachen alle Spieler, die noch am Leben sind. 
+Sie können ihre Stimme für denjenigen abgeben, den sie töten möchten. Ihre Auswahl wird in der Datenbank
+gespeichert. Anschließend warten das Gerät auf ein Ergebnis der Abstimmung.
+Das Gerät des Spielleiters kontrolliert dabei, ob alle Spieler ihre Stimme abgegeben haben.
+Sollte das der Fall sein, wird der Spieler mit den meisten Stimmen als victimDor in der Datenbank
+gespeichert
