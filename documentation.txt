@@ -49,7 +49,7 @@ erkennen. Die Werwölfe ihrerseits hingegen achten natürlich darauf, das Mädch
 es besteht also beim Blinzeln ein gewisses Risiko.
 
 Die <Seherin> erwacht in der Nacht alleine und zeigt auf einen Spieler.
-Der Spielleiter zeigt der Seherin nun die entsprechende Charakter-Karte der Person.
+Der Spielleiter zeigt der Seherin nun die Gesinnung der Person.
 Die Seherin weiß dadurch mehr als die übrigen Dorfbewohner, muss aber mit ihrem Wissen
 sorgfältig umgehen, um nicht von den Werwölfen enttarnt zu werden.
 
@@ -139,11 +139,11 @@ Die für das Spiel benötigten Phasen werden gesammelt und die createGameDB() wi
 Die Phasen sowie die Rollen werden in die Datenbank geschrieben.
 Nach erfolgreicher Erstellung des Spiels in der Datenbank wird die {@link QRCodeActivity}
 aufgerufen.
-Der erstellende Spieler ist der Spielleiter.
+Der spielerstellende Spieler ist der Spielleiter (sein Gerät fungiert als Spielleitergerät).
 
 = QRCodeActivity =
 
-Diese Activity erzeugt aus der gameID des erstellten Spiels einen QR-Code der von anderen Spielern
+Diese Activity erzeugt aus der gameID des erstellten Spiels einen QR-Code, der von anderen Spielern
 gescannt werden muss, um dem Spiel beizutreten. Erst, wenn alle Spieler dem Spiel beigetreten sind, 
 wird die {@link LetsPlayActivity} auf dem Spielleitergerät aufgerufen. 
 Wird die "Zurücktaste" in dieser Activity betätigt, erscheint ein PopUp - Fenster (Aufruf {@link popup}) bei 
@@ -151,17 +151,6 @@ welchem bestätigt werden muss, dass ins Menu zurückgekehrt werden soll. Wird d
 so wird die Methode resetOneGame der Klasse {@link databaseCon} aufgerufen. Im Zuge dessen wird das bereits erstellte
 Spiel wieder aus der Datenbank gelöscht (aus den Tabellen "player_game", "_GAME" und "_PHASES") und die {@link MenuActivity} wird
 aufgerufen.
-
-= LetsPlayActivity =
-
-Diese Activity dient als Überleitung zum eigentlichen Spiel. Hierbei wird ein Audio von dem Spielleitergerät abgespielt, welches eine 
-kurze Einleitung gibt und die Spieler auffordert die Augen zu schließen. Außerdem werden durch die Aufrufe der Methoden getPlayerIDs, 
-getPlayerNames und getImagesAsString der Klasse {@link databaseCon} die im Spiel befindlichen PlayerIDs und zugehörigen Namen sowie 
-Bilder aus der Datenbank geladen und anschließend global gespeichert. Somit stehen diese zu späteren Zeitpunkten zur Verfügung und müssen nicht bei gebrauch von der Datenbank 
-abgefragt werden. 
-Anschließend wird das Beginn des Spiels mit einem Audio angekündigt und die GameActivity 
-wird aufgerufen.
-
 
 = JoinGameActivity =
 
@@ -171,6 +160,21 @@ Mithilfe dieser Information wird in der Datenbank der Spieler dem Spiel hinzugef
 Anschließend wird {@link GetRole} aufgerufen. Die eigene Rolle wird aus der Datenbank angefragt
 und angezeigt.
 
+= GetRole =
+
+Mit dem Aufruf dieser Activity wird die der Spielerrolle entsprechenden Karte geladen und kann durch eine Betätigung des Kartensymbols
+angezeigt werden. Bei einer weiteren Betätigung dieses wird dem Spieler die seiner Rolle entsprechenden Rollenbeschreibung angezeigt.
+Berührt er die Karte erneut, so wird wieder nur die Kartenrückseite angezeigt (die Rolle bleibt verborgen).
+
+Ist der Spieler bereit, so betätigt er des "Bereit" - Button. Sobald alle Spieler bereit sind, wird die {@link LetsPlayActivity} aufgerufen.
+
+= LetsPlayActivity =
+
+Diese Activity dient als Überleitung zum eigentlichen Spiel. Hierbei wird ein Audio von dem Spielleitergerät abgespielt, welches eine 
+kurze Einleitung gibt und die Spieler auffordert die Augen zu schließen. Außerdem werden durch die Aufrufe der Methoden getPlayerIDs, 
+getPlayerNames und getImagesAsString der Klasse {@link databaseCon} die im Spiel befindlichen PlayerIDs und zugehörigen Namen sowie 
+Bilder aus der Datenbank geladen und anschließend global gespeichert. Somit stehen diese zu späteren Zeitpunkten zur Verfügung und müssen nicht bei Gebrauch von der Datenbank abgefragt werden. 
+Anschließend wird das Beginn des Spiels mit einem Audio angekündigt und die GameActivity wird aufgerufen.
 
 = GameActivity =
 
