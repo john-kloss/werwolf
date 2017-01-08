@@ -348,6 +348,127 @@ Diese Klasse ändert den ready-Eintrag eines Spielers in der Datenbank (in der p
 2.4 phpFiles
 /* als eigener Unterpunkt oder Erklärung in der jeweiligen Klasse, in der sie verwendet werden? */
 
+	= changeAlive.php =
+	
+	Ändert den Zustand eines Spielers (tot/lebendig).
+	
+	= changeRole.php =
+	
+	Ändert die Rolle eines Spielers.
+	
+	= create_new_game.php =
+	
+	Kreiert ein neues Spiel in der Datenbank mit neuer gameID und fügt die benötigten Spieler
+	(noch ohne playerID) ein.
+	
+	= create_player.php =
+	
+	Kreiert einen neuen Spieler und fügt in die player-Tabelle ein.
+	
+	= deleteAccount.php =
+	
+	Löscht den Account eines Spielers aus der Datenbank.
+	
+	= delete_game.php =
+	
+	Löscht ein Spiel.
+	
+	= exitGame.php =
+	
+	Wenn das Spiel verlassen wird, werden alle Einträge des Spiels in der player_game und _game Tabelle gelöscht.
+	
+	= get_all_player.php =
+	
+	Holt Informationen aller Spieler
+	
+	= getCurrentPhase.php =
+	
+	Fragt die aktuelle Phase ab.
+	
+	= get_game_details.php =
+	
+	Fragt Spieldetails ab.
+	
+	= getNextPhase =
+	
+	Fragt die nächste Phase ab.
+	
+	= getNumOfWerAlive.php =
+	
+	Holt die Anzahl der lebendigen Werwölfe aus der player_game Tabelle.
+	
+	= get_player_details.php =
+	
+	Fragt Spielerdetails ab.
+	
+	= get_player_game_details.php =
+	
+	Holt Details aus der player_game Tabelle.
+	
+	= initialize_table.php =
+	
+	Initialisiert Tabelle beim Erstellen eines Spiels.	
+	
+	= insert_player.php =
+	
+	Fügt einen Spieler in das entsprechende Spiel ein.
+	
+	= login.php =
+	
+	Kontrolliert, ob login erfolgreich ist.
+	
+	= reset.php =
+	
+	@debug: reseted die Datenbank
+	
+	= save_image.php =
+	
+	Speichert ein ausgewähltes Bild in der Player-Tabelle.
+	
+	= setLoginState.php =
+	
+	Setzt den Login-Status in der Datenbank, um zu kontrollieren, ob ein Spieler eingeloggt ist.
+	
+	= setLovers.php =
+	
+	Setzt die Verliebten in der Datenbank.	
+	
+	= setNextPhase.php =
+	
+	Setzt die nächste Phase
+	
+	= setReady.php =
+	
+	Vermerkt in der Datenbank, ob ein Spieler bereit ist.
+	
+	= setVictims.php =
+	
+	Schreibt das Opfer einer Wahl in die Datenbank.
+	
+	= submit_choice.php =
+	
+	Gibt die eigene Stimme bei einer Abstimmung ab.
+	
+	= update_game.php =
+	
+	Updated Daten in der game-Tabelle.
+	
+	= updateHexe.php =
+	
+	Updated Informationen der Hexe (Gifttrank, Heiltrank).
+	
+	= update_player.php =
+	
+	Updated Infromationen eines Spielers.
+	
+	= update_player_game.php =
+	
+	Updated Informationen der player_game-Tabelle.
+	
+	= vote_update.php =
+	
+	Holt Informationen zum Status einer Abstimmung.
+
 
 
 
