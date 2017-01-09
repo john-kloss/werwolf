@@ -476,14 +476,74 @@ Diese Klasse ändert den ready-Eintrag eines Spielers in der Datenbank (in der p
 
 databaseCon:
 
-	>DiebGetRole<
-Diese Methode startet einen Datenbankaufruf mit Hilfe des PHP-Files get_all_player.php, der Methode "GET" und den {@params gameID}.
-Dabei werden die letzten beiden Rollen der Datenbanktabelle "player_game" abgefragt, welche die entsprechende gameID haben, denen jedoch
-keine playerID zugeteilt wurde. 
-Sie gibt ein Array der Größe 2 mit den beiden besagten Rollen zurück {@return roles}.
+	>restration<
+Registrierung bei erster Spielnutzung -> Erstellung eines Useraccount in Datenbank
+
+	>login<
+Login bei erneuterm Öffnunen der App -> Abfrage der USerdaten von Datenbank
+
+	>deleteAccount<
+Account löschen -> Löschen der Userdaten aus Datenbank
+
+	>setImage<
+Bild in Datanbank speichern.
+
+	>getImage<
+Bild aus Datenbank abfragen.
+
+	>getImageAsString<
+Bild wird als String in globalen Variablen gespeichert.
+
+	>getReady<
+Abfrage der ready-Variable aus Datenbank -> für Spielstart (LetsPlayActivity)
+
+	>getPlayerInGame<
+Abfrage aus Datenbank, wie viele Spieler bereits beigetreten sind 
+
+	>resetOneGame<
+Löschen eines Spieles.
+
+	>getNumPlayers<
+Anzahl der Spieler im Spiel global speichern.
+
+	>getPlayerIDs<
+Abfrage und globaler Speicherung der PlayerIDs im Spiel.
+
+	>getPlayerNames<
+Abfrage und globale Speicherung der Spielernamen im Spiel.
+
+	>getPlayerAlive<
+Abfrage, welche Spieler noch am Leben sind.
+
+	>alive<
+Abfrage, ob ein spezieller Spieler noch am Leben ist.
+
+	>getName<
+Abfrage des Namens eines speziellen Spielers.
+
+	>DiebGetRoles<
+Abfrage der Rolle, welche am Ende noch übrig sind -> Wahl des Diebes.
+
+	>setVictims<
+Victim-Variablen in Datenbank setzen.
+
+	>Werwolf<
+a) Wie viele Werwölfe haben bereits gevoted? 
+b) abstimmen
+c) Anzahl lebender Werwölfe ermitteln
 
 	>Seherin<
-Diese Methode startet einen Datenbankaufruf mit Hilfe des PHP-Files get_player_game_details.php, der Methode "GET" und den 
-{@params gameID, playerID}.
-Somit wird die Rolle des gewählten Spielers ermittelt. Über eine if-Abfrage wird bestimmt, ob der Spieler gut oder böse ist.
-Die Methode gibt einen String "gut" oder "böse" zurück {@return String {gut, böse}}.
+Ermittelt die Gesinnung eines ausgewählten Spielers.
+
+	>Hexe<
+Abfrage und Anzeige des WErwolfopfers, Nutzung der Tränke
+
+	>Tag<
+a) Wie viele Spieler haben bereits gevoted?
+b) abstimmen
+
+	>getLover<
+Abfrage und Anzeige, ob man "in jemanden verliebt ist".
+
+	>isLogged<
+Abfrage, ob Spieler bereits auf anderem Gerät eingelogged ist.
