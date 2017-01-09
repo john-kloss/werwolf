@@ -95,20 +95,67 @@ Garaus machen wollen. Lediglich wenn das Liebespaar aus einem Werwolf und einem 
 können diese beiden Spieler nur dann gewinnen, wenn außer ihnen niemand überlebt.
 
 \subsection{Idee: Umsetzung als Android-App}
-Die App versucht das Spiel so gut wie möglich digital umzusetzen. Dabei ist ein erheblicher Vorteil
-die Ersetzung des Spielleiters durch die App. Alle Daten werden in einer Datenbank gespeichert und
-die nötigen Berechnungen werden von den spielenden Geräten durchgeführt.
+Die App versucht das Spiel so gut wie möglich digital umzusetzen. Die Spielkarten werden durch ein Android$-$Gerät ersetzt und ein Spielleiter ist nicht mehr notwendig. Alle notwendigen Daten werden in einer Datenbank gespeichert. So kann jedes Gerät jederzeit darauf zugreifen.
+Der Spielablauf soll nun wie folgt aussehen: 
+Jeder Spieler benötigt zum Spielen sein Smartphone mit der $"$FINd die Werwölfe$"-$App mit einen Spieler$-$Account. Ein Spieler kann nun ein neues Spiel erstellen. Dadurch wird ein QR-Code erstellt, welchen die anderen Spieler scannen können, um diesem Spiel beizutreten. Die Rollen werden den Spielern automatisch und zufällig zugewiesen. Sobald alle Spieler bereit sind, kann das Spiel beginnen. Wie im Kartenspiel haben die Spieler die Augen während der Nachtphase geschlossen. Audio$-$Ausgaben leiten die Spieler durch das Spiel und fordern die Spieler zum Öffnen$/$Schließen ihrer Augen auf. Diese werden vom $"$Spielleiter$"-$Gerät (\textit{Gerät des Spielers, der das Spiel erstellt hat}) abgespielt. In der Nacht erwachen nach und nach die Sonderrollen und führen ihre Aktionen auf dem Gerät aus. Am Tag sehen dann alle Spieler auf ihren Geräten welche Opfer es in der Nacht gegeben hat. Danach werden den Spielern Buttons von allen Spielern angezeigt. Aus diesen können sie dann das Opfer des Tages wählen.
+Die Geräte stehen in ständiger Verbindung zur Datenbank, um zu wissen in welcher Phase sich das Spiel befindet und wann das Ende des Spiels erreicht ist. 
+
+
 
 \section{Umsetzung}
 
 	\subsection{Projektplanung}
+	
+Zur Implementierung der App wurde Android-Studio verwendet. [Datenbank auf Server] $\dots$	
+	
+		
 		\subsubsection{Meilensteine}
+		
+\begin{enumerate}
+
+\item \textbf{Aufgabenplanung} \\
+$\rightarrow$  
+
+\item \textbf{Modellierung der App} \\
+$\rightarrow$
+
+\item \textbf{Recherche} \\
+$\rightarrow$ Informieren über die Techniken und Werkzeuge zur Umsetzung der App
+
+\item \textbf{Implementierung} \\
+$\rightarrow$ Umsetzung aller Funktionen in Android$-$Studio
+
+\item \textbf{Datenbank} \\
+$\rightarrow$ Implementierung der php-Files zur Kommunikation zwischen Datenbank und Android$-$Geräten
+
+\item \textbf{Design} \\
+$\rightarrow$ optische und akustische Gestaltung der App
+
+\item \textbf{Dokumentation} \\
+$\rightarrow$ Erklärung für Entwickler und Benutzer wie die App funktioniert
+
+\item \textbf{Testen} 
+
+\item \textbf{Abschlusspräsentation} 
+
+
+\end{enumerate}
+		
+		
 		\subsubsection{Projektplan}
+
+
+
 		\subsubsection{Burn-Down-Chart}
 
+
+
+
 	\subsection{Projektdurchführung}
-		\subsubsection{Architekturdiagramm}
 		
+		\subsubsection{Klassendiagramm}
+		
+\includegraphics[width = 15 cm, height = 8 cm]{WUML}
 		
 		
 		\subsubsection{Beschreibung der Klassen}
@@ -213,8 +260,7 @@ Alle teilnehmenden Rollen werden in das \textit{cards}$-$Array geschrieben, welc
 und das \textit{cardsShuffled}$-$Array entsteht.
 Die für das Spiel benötigten Phasen werden gesammelt und die \textit{createGameDB()} wird ausgeführt.
 Die Phasen sowie die Rollen werden in die Datenbank geschrieben.
-Nach erfolgreicher Erstellung des Spiels in der Datenbank wird die \textit{QRCodeActivity} aufgerufen. Der erstellende Spieler ist der Spielleiter.
-    
+Nach erfolgreicher Erstellung des Spiels in der Datenbank wird die \textit{QRCodeActivity} aufgerufen. Das Gerät des Spieler, der das Spiel erstellt hat, wird zum $"$Spielleiter$"-$Gerät.
 \vspace{0,3 cm}  
 
 \textbf{GetRole.}
@@ -427,17 +473,13 @@ Diese Klasse ändert den \textit{ready}$-$Eintrag eines Spielers in der Datenban
 
 
 		
-		
+\newpage	
 \subsubsection{Datenbankschema}
+			
+Beschreibung der Tabellen in Fig.1:
+\\		
 		
-\begin{figure}[] 
-  \centering
-     \includegraphics[height = 9 cm, width = 12cm]{DB_Schema}
-  \caption{Datenbankschema}
-\end{figure}
-	
-
-\hspace*{0,7 cm}\textbf{$player\_game.$}
+\textbf{$player\_game.$}
 Diese Tabelle ordnet einem Spieler ein Spiel zu und speichert, welche Rolle dieser verkörpert (\textit{role}). Der \textit{ready}$-$Wert ist für den Beginn des Spiels gedacht. Sobald alle Spieler dem Spiel beigetreten und bereit sind (\textit{ready == 1}) beginnt das Spiel. Bei den Abstimmungen wird in der \textit{numOfVotes} gespeichert, wie oft für einen Spieler abgestimmt wurde.
 \\
 
@@ -452,6 +494,11 @@ Hier werden zu jedem Spiel die notwendigen Spielphasen gespeichert. Abhängig vo
 \textbf{$\_PLAYER.$}
 Diese Tabelle enthält alle Spieler-Accounts. Der \textit{login}-Wert gibt an, ob ein Spieler auf einem Gerät angemeldet ist. So wird sicher gestellt, dass jeder Spieler nur auf einem Gerät angemeldet sein kann.  
 
+\begin{figure}[] 
+  \centering
+     \includegraphics[height = 10 cm, width = 14cm]{DB_Schema}
+  \caption{Datenbankschema}
+\end{figure}	
 
 \end{document}
 
