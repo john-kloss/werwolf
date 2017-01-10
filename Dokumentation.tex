@@ -1,9 +1,11 @@
-\documentclass[12pt]{article}
+\documentclass[12pt, a4paper]{article}
 
+\usepackage[german]{babel}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
 
 \title{Dokumentation "FINd die Werwölfe"}
 \author{Alexandra Koch, Gina Seckendorf, Jonathan Kloss}
@@ -12,20 +14,22 @@
 
 \maketitle
 \begin{center} \includegraphics{wolf} \end{center}
+\newpage
 \tableofcontents
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{4}
 
 \newpage
-
 \section{Projektidee}
 
-\subsection{Spielbeschreibung}
+	\subsection{Spielbeschreibung}
 Als Vorlage für die App dient das Spiel $"$Die Werwölfe von Düsterwald$"$ von Philippe des Phalliéres und Hervé Marly. Thematisch geht es darum, dass das kleine Dörfchen Düsterwald von Werwölfen heimgesucht wird. Die Gruppe der Bürger versucht die Wölfe, die sich als Bürger getarnt haben, zu entlarven. Dagegen versuchen die Wölfe als einzige zu überleben und Widersacher auszuschalten.
 
-\subsubsection{Vorbereitung}
+
+		\subsubsection{Vorbereitung}
 Der Spielleiter mischt alle Charakterkarten und teilt an jeden Spieler verdeckt eine davon aus. Die Spieler schauen sich ihre Karte an und erkennen nun, ob sie einen Werwolf, einen einfachen Dorfbewohner oder eine Sonderrolle verkörpern. Danach ruft der Spielleiter zur ersten Nacht aus und das eigentliche Spiel kann beginnen.
 
-\subsubsection{Nachtphase}
+
+		\subsubsection{Nachtphase}
 In der Nachtphase schließen alle Spieler die Augen. Der Spielleiter ruft die handelnden Charaktere einzeln auf. Sie öffnen ihre Augen und führen ihre Aktion aus.
 
 \vspace{0,3 cm}
@@ -74,7 +78,8 @@ Scheidet der \textit{Jäger} aus dem Spiel aus, feuert er in seinem letzten Atem
 mit dem er einen Spieler seiner Wahl mit in den Tod reißt, d.h. er bestimmt einen Spieler,
 der mit ihm aus dem Spiel ausscheidet.
 
-\subsubsection{Tagphase}
+
+		\subsubsection{Tagphase}
 Am Tag wachen alle Spieler auf. Das Opfer der Werwölfe wird verkündet, es dreht seine Karte um,
 gilt als tot und scheidet aus der Runde aus, d. h., er darf keinen Kommentar zum Spiel mehr abgeben.
 Nun diskutieren die Dorfbewohner, wer von ihnen ein Werwolf sein könnte. Diese Diskussionsphase
@@ -88,36 +93,31 @@ bei erneutem Patt entscheidet ein zu Spielbeginn gewählter Hauptmann. Den verbl
 wird die Charakterrolle des ausgeschiedenen Spielers bekanntgeben. Nach dem Tag wird es wieder
 Nacht und der Zyklus beginnt von vorn.
 
-\subsubsection{Ende des Spiels}
+
+		\subsubsection{Ende des Spiels}
 Das Spiel endet, sobald entweder alle Werwölfe oder alle Bürger tot sind.
 Das Ziel der Werwölfe ist es, alle Bürger auszulöschen, während die Dorfbewohner den Wölfen den
 Garaus machen wollen. Lediglich wenn das Liebespaar aus einem Werwolf und einem Dorfbewohner besteht,
 können diese beiden Spieler nur dann gewinnen, wenn außer ihnen niemand überlebt.
 
-\subsection{Idee: Umsetzung als Android-App}
+
+	\subsection{Umsetzung als Android-App}
 Die App versucht das Spiel so gut wie möglich digital umzusetzen. Die Spielkarten werden durch ein Android$-$Gerät ersetzt und ein Spielleiter ist nicht mehr notwendig. Alle notwendigen Daten werden in einer Datenbank gespeichert. So kann jedes Gerät jederzeit darauf zugreifen.
 Der Spielablauf soll nun wie folgt aussehen: 
-Jeder Spieler benötigt zum Spielen sein Smartphone mit der $"$FINd die Werwölfe$"-$App mit einen Spieler$-$Account. Ein Spieler kann nun ein neues Spiel erstellen. Dadurch wird ein QR-Code erstellt, welchen die anderen Spieler scannen können, um diesem Spiel beizutreten. Die Rollen werden den Spielern automatisch und zufällig zugewiesen. Sobald alle Spieler bereit sind, kann das Spiel beginnen. Wie im Kartenspiel haben die Spieler die Augen während der Nachtphase geschlossen. Audio$-$Ausgaben leiten die Spieler durch das Spiel und fordern die Spieler zum Öffnen$/$Schließen ihrer Augen auf. Diese werden vom $"$Spielleiter$"-$Gerät (\textit{Gerät des Spielers, der das Spiel erstellt hat}) abgespielt. In der Nacht erwachen nach und nach die Sonderrollen und führen ihre Aktionen auf dem Gerät aus. Am Tag sehen dann alle Spieler auf ihren Geräten welche Opfer es in der Nacht gegeben hat. Danach werden den Spielern Buttons von allen Spielern angezeigt. Aus diesen können sie dann das Opfer des Tages wählen.
+Jeder Spieler benötigt zum Spielen sein Smartphone mit der $"$FINd die Werwölfe$"$-App mit einen Spieler$-$Account. Ein Spieler kann nun ein neues Spiel erstellen. Dadurch wird ein QR-Code erstellt, welchen die anderen Spieler scannen können, um diesem Spiel beizutreten. Die Rollen werden den Spielern automatisch und zufällig zugewiesen. Sobald alle Spieler bereit sind, kann das Spiel beginnen. Wie im Kartenspiel haben die Spieler die Augen während der Nachtphase geschlossen. Audio$-$Ausgaben leiten die Spieler durch das Spiel und fordern die Spieler zum Öffnen$/$Schließen ihrer Augen auf. Diese werden vom $"$Spielleiter$"-$Gerät (\textit{Gerät des Spielers, der das Spiel erstellt hat}) abgespielt. In der Nacht erwachen nach und nach die Sonderrollen und führen ihre Aktionen auf dem Gerät aus. Am Tag sehen dann alle Spieler auf ihren Geräten welche Opfer es in der Nacht gegeben hat. Danach werden den Spielern Buttons von allen Spielern angezeigt. Aus diesen können sie dann das Opfer des Tages wählen.
 Die Geräte stehen in ständiger Verbindung zur Datenbank, um zu wissen in welcher Phase sich das Spiel befindet und wann das Ende des Spiels erreicht ist. 
 
 
-
-\section{Umsetzung}
-
-	\subsection{Projektplanung}
+\newpage
+\section{Projektplanung}
 	
-Zur Implementierung der App wurde Android-Studio verwendet. [Datenbank auf Server] $\dots$	
-	
+	\subsection{Meilensteine}
 		
-		\subsubsection{Meilensteine}
-		
-\begin{enumerate}
+\begin{itemize}
 
-\item \textbf{Aufgabenplanung} \\
-$\rightarrow$  
+\item \textbf{Aufgabenplanung}   
 
-\item \textbf{Modellierung der App} \\
-$\rightarrow$
+\item \textbf{Modellierung der App} 
 
 \item \textbf{Recherche} \\
 $\rightarrow$ Informieren über die Techniken und Werkzeuge zur Umsetzung der App
@@ -138,27 +138,32 @@ $\rightarrow$ Erklärung für Entwickler und Benutzer wie die App funktioniert
 
 \item \textbf{Abschlusspräsentation} 
 
-
-\end{enumerate}
+\end{itemize}
 		
+
+	\subsection{Projektplan}
+
+Der Projektplan wurde im Laufe des Projekts mehrmals angepasst. Im folgenden ist die letzte Version aufgeführt: 
+
+\includepdf[pages=-]{Projektplan}
+
+
+	\subsection{Burn-Down-Chart}
+
+
+
+\section{Projektdurchführung}
+
+Zur Implementierung der App wurde Android-Studio verwendet. [Datenbank auf Server] $\dots$	
 		
-		\subsubsection{Projektplan}
-
-
-
-		\subsubsection{Burn-Down-Chart}
-
-
-
-
-	\subsection{Projektdurchführung}
-		
-		\subsubsection{Klassendiagramm}
+	\subsection{Klassendiagramm}
 		
 \includegraphics[width = 15 cm, height = 8 cm]{WUML}
 		
 		
-		\subsubsection{Beschreibung der Klassen}
+	\subsection{Beschreibung der Klassen}
+		
+		\subsubsection{Activities}
 		
 \textbf{AmorActivity.}
 Zu Beginn der Activity wird über das Spielleiter-Gerät ein Audio abgespielt, welches Amor auffordert die Augen zu öffnen. Diesem wird nun auf dem Display die Spieler anzeigt, welche mit Hilfe der Methode createObjects der Klasse \textit{GameActivity} erstellt werden. Allen anderen Spielern wird ein schwarzer Bildschirm angezeigt (activity$\_$wait layout). Amor kann nun zwei Spieler (auch sich selbst) wählen. Seine Wahl bestätigt er mit dem $"$Bestätigen$" -$ Button. Damit wird die Klasse \textit{AmorDB} aufgerufen und die gewählten Spieler werden in der Datenbank mit ihrem jeweiligen Liebespartner abgespeichert (setLovers()).
@@ -313,29 +318,100 @@ Diese Activity zeigt die Spielregeln und Rollenbeschreibungen an.
       
 \textbf{SettingsActivity.}
 In der \textit{SettingsActivity} hat der Spieler die Möglichkeit sein Bild zu ändern. Die Änderung erfolgt mittels der Funktion \textit{setImage} der Klasse \textit{databaseCon}. Außerdem kann er seinen Account löschen.
-  		
+  
+  
+		\subsubsection{Classes}		
 		
-		\subparagraph{Classes}
-		
-\textbf{Audio.}
+\hspace{0,6 cm}\textbf{Audio.}
 Diese Klasse kümmert sich um das Abspielen des richtigen Audios zur richtigen Zeit.
 
 \vspace{0,3 cm}
 
 \textbf{databaseCon.}
-Diese Klasse enthält verschiedene Funktionen, die für die Kommunikation bzw. den Datenaustausch mit der Datenbank zuständig sind.
+Diese Klasse enthält verschiedene Funktionen, die für die Kommunikation bzw. den Datenaustausch mit der Datenbank zuständig sind:
+
+\begin{description}
+
+\item[registration]\hfill \\
+Registrierung bei erster Spielnutzung $\rightarrow$ Erstellung eines Useraccounts in der Datenbank
+
+\item[login]\hfill \\
+Login bei erneuterm Öffnunen der App $\rightarrow$ Abfrage der USerdaten von Datenbank
+
+\item[deleteAccount]\hfill \\
+Account löschen $\rightarrow$ Löschen der Userdaten aus Datenbank
+
+\item[setImage]\hfill \\
+Bild in Datanbank speichern.
+
+\item[getImage]\hfill \\
+Bild aus Datenbank abfragen.
+
+\item[getImageAsString]\hfill \\
+Bild wird als String in globalen Variablen gespeichert.
+
+\item[getReady]\hfill \\
+Abfrage der ready$-$Variable aus Datenbank $\rightarrow$ für Spielstart (LetsPlayActivity)
+
+\item[getPlayerInGame]\hfill \\
+Abfrage aus Datenbank, wie viele Spieler bereits beigetreten sind 
+
+\item[resetOneGame]\hfill \\
+Löschen eines Spieles.
+
+\item[getNumPlayers]\hfill \\
+Anzahl der Spieler im Spiel global speichern.
+
+\item[getPlayerIDs]\hfill \\
+Abfrage und globaler Speicherung der PlayerIDs im Spiel.
+
+\item[getPlayerNames]\hfill \\
+Abfrage und globale Speicherung der Spielernamen im Spiel.
+
+\item[getPlayerAlive]\hfill \\
+Abfrage, welche Spieler noch am Leben sind.
+
+\item[alive]\hfill \\
+Abfrage, ob ein spezieller Spieler noch am Leben ist.
+
+\item[getName]\hfill \\
+Abfrage des Namens eines speziellen Spielers.
+
+\item[DiebGetRoles]\hfill \\
+Abfrage der Rolle, welche am Ende noch übrig sind $\rightarrow$ Wahl des Diebes.
+
+\item[setVictims]\hfill \\
+Victim$-$Variablen in Datenbank setzen.
+
+\item[Werwolf]\hfill \\
+a  Wie viele Werwölfe haben bereits gevoted?  \\
+b  abstimmen \\
+c  Anzahl lebender Werwölfe ermitteln
+
+\item[Seherin]\hfill \\
+Ermittelt die Gesinnung eines ausgewählten Spielers.
+
+\item[Hexe]\hfill \\
+Abfrage und Anzeige des Werwolfopfers, Nutzung der Tränke
+
+\item[Tag]\hfill \\
+a  Wie viele Spieler haben bereits gevoted? \\
+b  abstimmen
+
+\item[getLover]\hfill \\
+Abfrage und Anzeige, ob man $"$in jemanden verliebt ist$"$.
+
+\item[isLogged]\hfill \\
+Abfrage, ob Spieler bereits auf anderem Gerät eingelogged ist.
+
+\end{description}
 
 \vspace{0,3 cm}
 
 \textbf{GlobalVariables.}
-Die Klasse \textit{GlobalVariables} enthält diverse globale Variablen, sowie deren \textit{Getter} und \textit{Setter}, um eine Parameterübergabe zwischen Activitys und java$-$Klassen zu vereinfachen.
-
-\vspace{0,2 cm}
-
-\underline{Global variables$:$ Game}
+Die Klasse \textit{GlobalVariables} enthält diverse globale Variablen, sowie deren \textit{Getter} und \textit{Setter}, um eine Parameterübergabe zwischen Activitys und java$-$Klassen zu vereinfachen:
 
 \begin{description}
-
 \item[ownPlayerID]\hfill \\ $\rightarrow$ speichert eigene PlayerID (für Login, Rollenabfrage, Spiel)
 \item[ownRole]\hfill \\ $\rightarrow$ speichert eigene Rolle
 \item[gameID]\hfill \\ $\rightarrow$ speichert aktuelle GameID
@@ -353,50 +429,13 @@ Die Klasse \textit{GlobalVariables} enthält diverse globale Variablen, sowie de
 \item[winner]\hfill \\ $\rightarrow$ String, der den Gewinner enthält
 \item[spielleiter]\hfill \\ $\rightarrow$ Boolean, welcher angibt, ob das Gerät Spielleitergerät ist, oder nicht $\dashrightarrow$ nötig zum Abspielen der Audios $\/$ Aufruf der killDB
 \item[images]\hfill \\ $\rightarrow$ String$-$Array, welches die Base64$-$Strings der Bilder der Spieler des aktuellen Spiels speichert.
-
-\end{description}
- 
-\vspace{0,3 cm}
- 
-\underline{Global variables: Dieb}
-
-\begin{description}
-
 \item[DiebChoosen]\hfill \\ $\rightarrow$ Boolean, welcher angibt, ob der Dieb als Sonderrolle ausgewählt wurde $\dashrightarrow$ denn wenn ja, müssen zwei weitere Karten ins \textit{cards}$-$Array aufgenommen werden $+$ wenn der Dieb ausgewählt wurde und es nur einen Werwolf gibt, darf dieser beim Mischen nicht eine der beiden letzten Karten werden (\textit{GameSetupActivity} $\dashrightarrow$ \textit{calculateGame} $+$ in der \textit{QRCodeActivity} wird ermittelt, wie viele Spieler dem Spiel bereits beigetreten sind (mit der Hilfe der Methode \textit{getPlayerInGame} der Klasse \textit{databaseCon}) somit muss bekannt sein, dass die letzten beiden Einträge frei bleiben werden.
-
-\end{description}
-
-\vspace{0,3 cm}    	
-
-\underline{Global variables: Amor}
-
-\begin{description}
-
 \item[lover1]\hfill \\ $\rightarrow$ speichert den Button des Spielers, welchen Amor als lover1 ausgewählt hat
 \item[lover2]\hfill \\ $\rightarrow$ speichert den Button des Spielers, welchen Amor als lover2 ausgewählt hat 
-\item[OK]\hfill \\ $\rightarrow$ Button, welcher von Amor betätigt wird, wenn er seine Wahl getroffen hat -> global, da der Button erst auswählbar wird, wenn Amor genau zwei Spieler ausgewählt hat. Die auf die Button angewendeten Methoden finden allerdings in der GameActivity statt.
-
-\end{description}
-    	
-\vspace{0,3 cm}
-
-\underline{Global variables: Seherin}
-
-\begin{description}
-
+\item[OK]\hfill \\ $\rightarrow$ Button, welcher von Amor betätigt wird, wenn er seine Wahl getroffen hat $\dashrightarrow$ global, da der Button erst auswählbar wird, wenn Amor genau zwei Spieler ausgewählt hat. Die auf die Button angewendeten Methoden finden allerdings in der GameActivity statt.
 \item[PopUpSeherinIdentity]\hfill \\ $\rightarrow$ AlertDialog, welcher das PopUp$-$Info$-$Fenster darstellt, welches die Gesinnung eines Spielers zeigt. Da die Fenster nur in der \textit{OnCreate}$-$Methode einer Activity erstellt werden können, es in diesem Fall jedoch in der \textit{getIdentity}$-$Methode der \textit{SeherinActivity} erst den entsprechenden Text erhält, muss es global definiert werden.
-
-\end{description}
-
-\vspace{0,3 cm}    	
-
-\underline{Global variables: Jäger}
-
-\begin{description}
-
 \item[JaegerDies]\hfill \\ $\rightarrow$ Boolean, welcher zu Beginn eines jeden Spiels auf $"$false$"$ gesetzt wird. Er zeigt an, ob der Jäger ein Opfer der Nacht $\/$ des Tages war $\dashrightarrow$ ist dies der Fall, so wird in der \textit{ showVictimActivity} noch nicht die \textit{killDB} nach Ablaufen der für die Anzeige vorgesehenen Zeit aufgerufen, sondern erst die \textit{JaegerActivity} aufgerufen. Des weiteren wird die Variable erneut in der \textit{showVictimActivity} gebraucht, um die Opfer der Nacht $\/$ des Tages und das$\/$die Opfer des Jägers entsprechend anzeigen zu können (es muss bekannt sein, welche Textfelder angezeigt werden sollen $-$ so gibt es eines speziell für das$\/$die Jägeropfer)
 \item[victimJaeger]\hfill \\ $\rightarrow$ Boolean, der das Opfer des Jägers beinhaltet. Wird genutzt, damit die entsprechende Aktion nur ausgeführt wird, wenn der Jäger ein Opfer gewählt hat.
-
 \end{description}
   
 \vspace{0,3 cm}
@@ -408,16 +447,15 @@ Die Klasse \textit{GlobalVariables} enthält diverse globale Variablen, sowie de
 \textbf{popup.}
 
 
-
-		\subparagraph{Database}
+		\subsubsection{Database}
 		
-\textbf{AmorDB.}
+\hspace{0,6 cm}\textbf{AmorDB.}
 Diese Klasse wird als AsyncTask ausgeführt. Dabei wird eine Datenbankaktualisierung mit Hilfe des PHP$-$Files \textit{setLovers}, der Methode $"$POST$"$ und den \textit{params} lover1(\textit{params}[0]), lover2(\textit{params}[1]) durchgeführt. Im Zuge dessen werden in der $"$player$\_$game$"-$Datenbanktabelle bei den Spielern, deren playerIDs lover1 bzw. lover2 entsprechen, in der Spalte $"$lover$"$ die PlayerID des jeweils andere eingetragen.
 
 \vspace{0,3 cm}
 
 \textbf{createGameDB.}
-Mithilfe des $"$create$\_$new$\_$game.php$"$ erstellt diese Klasse ein neues Spiel in der Datenbank. Dabei fügt sie ein neues Spiel in die $\_$GAME$-$Tabelle ein und erstellt dazu Einträge in der player$\_$game$-$Tabelle [2.2.3 Fig. 2]. Des weiteren werden die Phasen des Spiels angelegt.
+Mithilfe des $"$create$\_$new$\_$game.php$"$ erstellt diese Klasse ein neues Spiel in der Datenbank. Dabei fügt sie ein neues Spiel in die $\_$GAME$-$Tabelle ein und erstellt dazu Einträge in der player$\_$game$-$Tabelle [3.3 Abbildung 1]. Des weiteren werden die Phasen des Spiels angelegt.
 
 \vspace{0,3 cm}
 
@@ -460,38 +498,137 @@ In dieser Klasse wird der \textit{alive}$-$Status der aktuellen Opfer auf 0 gese
 \textbf{NextPhaseDB.}
 Diese Klasse holt sich aus der Datenbank zu einer bestimmten Phase den \textit{nextPhase}$-$Eintrag und ändert dementsprechend die globale Variable \textit{nextPhase}.
 
+\vspace{0,3 cm}
+
 \textbf{setNextPhase.}
 Am Ende jeder Phase wird vom gerade $"$aktiven$"$ Gerät die Klasse \textit{setNextPhase} aufgerufen. Diese ändert die aktuelle Phase in der Datenbank.
+
+\vspace{0,3 cm}
 
 \textbf{setReadyDB.}
 Diese Klasse ändert den \textit{ready}$-$Eintrag eines Spielers in der Datenbank (in der player$\_$game$-$Tabelle), sobald dieser in der \textit{GetRole} auf den \textit{bereit}$-$Button gedrückt hat.
 	
+\vspace{0,3 cm}	
+	
 \textbf{showVictimDB.}
 
 
-		\subparagraph{php-Files}
+		\subsubsection{php-Files}
+		
+\begin{description}
 
+\item[changeAlive.php]\hfill \\
+Ändert den Zustand eines Spielers (tot/lebendig).
+	
+\item[changeRole.php]\hfill \\
+Ändert die Rolle eines Spielers.
+	
+\item[create$\_$new$\_$game.php]\hfill \\
+Kreiert ein neues Spiel in der Datenbank mit neuer gameID und fügt die benötigten Spieler (noch ohne playerID) ein.
+	
+\item[create$\_$player.php]\hfill \\
+Kreiert einen neuen Spieler und fügt in die player$-$Tabelle ein.
+	
+\item[deleteAccount.php]\hfill \\
+Löscht den Account eines Spielers aus der Datenbank.
+	
+\item[delete$\_$game.php]\hfill \\
+Löscht ein Spiel.
+	
+\item[exitGame.php]\hfill \\
+Wenn das Spiel verlassen wird, werden alle Einträge des Spiels in der player$\_$game und $\_$game Tabelle gelöscht.
+	
+\item[get$\_$all$\_$player.php]\hfill \\
+Holt Informationen aller Spieler
+	
+\item[getCurrentPhase.php]\hfill \\
+Fragt die aktuelle Phase ab.
+
+\item[get$\_$game$\_$details.php]\hfill \\
+Fragt Spieldetails ab.
+	
+\item[getNextPhase.php]\hfill \\	
+Fragt die nächste Phase ab.
+	
+\item[getNumOfWerAlive.php]\hfill \\
+Holt die Anzahl der lebendigen Werwölfe aus der player$\_$game Tabelle.
+	
+\item[get$\_$player$\_$details.php]\hfill \\
+Fragt Spielerdetails ab.
+
+\item[get$\_$player$\_$game$\_$details.php]\hfill \\
+Holt Details aus der player$\_$game Tabelle.
+	
+\item[initialize$\_$table.php]\hfill \\
+Initialisiert Tabelle beim Erstellen eines Spiels.	
+	
+\item[insert$\_$player.php]\hfill \\
+Fügt einen Spieler in das entsprechende Spiel ein.
+	
+\item[login.php]\hfill \\
+Kontrolliert, ob login erfolgreich ist.
+	
+\item[reset.php]\hfill \\
+Zum debuggen: reseted die Datenbank
+	
+\item[save$\_$image.php]\hfill \\
+Speichert ein ausgewähltes Bild in der Player$-$Tabelle.
+	
+\item[setLoginState.php]\hfill \\
+Setzt den Login$-$Status in der Datenbank, um zu kontrollieren, ob ein Spieler eingeloggt ist.
+	
+\item[setLovers.php]\hfill \\
+Setzt die Verliebten in der Datenbank.	
+	
+\item[setNextPhase.php]\hfill \\
+Setzt die nächste Phase
+	
+\item[setReady.php]\hfill \\
+Vermerkt in der Datenbank, ob ein Spieler bereit ist.
+	
+\item[setVictims.php]\hfill \\
+Schreibt das Opfer einer Wahl in die Datenbank.
+	
+\item[submit$\_$choice.php]\hfill \\
+Gibt die eigene Stimme bei einer Abstimmung ab.
+	
+\item[update$\_$game.php]\hfill \\
+Updated Daten in der game$-$Tabelle.
+	
+\item[updateHexe.php]\hfill \\
+Updated Informationen der Hexe (Gifttrank, Heiltrank).
+	
+\item[update$\_$player.php]\hfill \\
+Updated Informationen eines Spielers.
+	
+\item[update$\_$player$\_$game.php]\hfill \\
+Updated Informationen der player$\_$game-Tabelle.
+	
+\item[vote$\_$update.php]\hfill \\
+Holt Informationen zum Status einer Abstimmung.
+
+
+\end{description}
 
 		
-\newpage	
-\subsubsection{Datenbankschema}
+\subsection{Datenbankschema}
 			
-Beschreibung der Tabellen in Fig.1:
+Im folgenden werden die Tabellen aus Abbildung 1 kurz erläutert:
 \\		
 		
-\textbf{$player\_game.$}
+\textbf{\textit{player$\_$game.}}
 Diese Tabelle ordnet einem Spieler ein Spiel zu und speichert, welche Rolle dieser verkörpert (\textit{role}). Der \textit{ready}$-$Wert ist für den Beginn des Spiels gedacht. Sobald alle Spieler dem Spiel beigetreten und bereit sind (\textit{ready == 1}) beginnt das Spiel. Bei den Abstimmungen wird in der \textit{numOfVotes} gespeichert, wie oft für einen Spieler abgestimmt wurde.
 \\
 
-\textbf{$\_GAME.$}
+\textbf{\textit{$\_$GAME.}}
 In dieser Tabelle werden Spiel-spezifische Informationen gespeichert. Sie enthält den Tränke-Vorrat der Hexe (\textit{poison, heal}) und die aktuell zum Tode verurteilten (\textit{victimDor, victimWer, $\dots$}).
 \\
 
-\textbf{$\_PHASES.$}
+\textbf{\textit{$\_$PHASES.}}
 Hier werden zu jedem Spiel die notwendigen Spielphasen gespeichert. Abhängig von der Auswahl der Rollen werden diese zu Beginn des Spiels festgelegt. Die Tabelle zeigt die jeweiligen Phasen (\textit{phases}) mit ihren darauf folgenden Phasen (\textit{nextPhase}). Der Wert \textit{currentPhase} gibt an, in welcher Phase sich ein Spiel befindet.
 \\
 
-\textbf{$\_PLAYER.$}
+\textbf{\textit{$\_$PLAYER.}}
 Diese Tabelle enthält alle Spieler-Accounts. Der \textit{login}-Wert gibt an, ob ein Spieler auf einem Gerät angemeldet ist. So wird sicher gestellt, dass jeder Spieler nur auf einem Gerät angemeldet sein kann.  
 
 \begin{figure}[] 
