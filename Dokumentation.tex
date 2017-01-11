@@ -148,13 +148,19 @@ Der Projektplan wurde im Laufe des Projekts mehrmals angepasst. Im folgenden ist
 \includepdf[pages=-]{Projektplan}
 
 
-	\subsection{Burn-Down-Chart}
+	\subsection{Soll-Ist-Diagramm} 
 
-
+\begin{figure}[h] 
+  \centering
+     \includegraphics[height = 10 cm, width = 14cm]{soll_ist_diagramm.png}
+  \caption{Soll-Ist-Diagramm}
+\end{figure}	
 
 \section{Projektdurchführung}
 
-Zur Implementierung der App wurde Android-Studio verwendet. [Datenbank auf Server] $\dots$	
+Zur Implementierung der App wurde Android-Studio verwendet. \\
+Die Datenbank wurde auf den Uniservern angelegt. Dazu wurden per SSH die benötigen Dateien erzeugt, Zugriffsrechte vergeben, URLs eingerichtet und php-Files angelegt.\\
+Der Zugriff auf die Datenbank erfolgte anschließend über phpMyAdmin. Dort wurden die benötigten Tabellen angelegt.
 		
 	\subsection{Klassendiagramm}
 		
@@ -440,7 +446,9 @@ Die Klasse \textit{GlobalVariables} enthält diverse globale Variablen, sowie de
   
 \vspace{0,3 cm}
 
-\textbf{JSONParser.}
+\textbf{JSONParser.}\\
+Der JSONParser erzeugt eine URL, welche eine Datenbankabfrage ermöglicht.
+Außerdem werden empfangene JSON-Objekte in entsprechende Strings umgewandelt.
 
 \vspace{0,3 cm}
 
