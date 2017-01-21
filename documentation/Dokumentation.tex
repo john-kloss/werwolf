@@ -24,6 +24,15 @@
 	\subsection{Spielbeschreibung}
 Als Vorlage für die App dient das Spiel $"$Die Werwölfe von Düsterwald$"$ von Philippe des Phalliéres und Hervé Marly. Thematisch geht es darum, dass das kleine Dörfchen Düsterwald von Werwölfen heimgesucht wird. Die Gruppe der Bürger versucht die Wölfe, die sich als Bürger getarnt haben, zu entlarven. Dagegen versuchen die Wölfe als einzige zu überleben und Widersacher auszuschalten.
 
+\subsection{Ablaufdiagramm}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.4]{ablauf.png}
+	\caption{Ablaufdigramm}
+	\label{fig:ablaufdiagramm}
+
+\end{figure}
+	
 
 		\subsubsection{Vorbereitung}
 Der Spielleiter mischt alle Charakterkarten und teilt an jeden Spieler verdeckt eine davon aus. Die Spieler schauen sich ihre Karte an und erkennen nun, ob sie einen Werwolf, einen einfachen Dorfbewohner oder eine Sonderrolle verkörpern. Danach ruft der Spielleiter zur ersten Nacht aus und das eigentliche Spiel kann beginnen.
@@ -155,6 +164,7 @@ Der Projektplan wurde im Laufe des Projekts mehrmals angepasst. Im folgenden ist
   \centering
      \includegraphics[height = 10 cm, width = 14cm]{soll_ist_diagramm.png}
   \caption{Soll-Ist-Diagramm}
+  \label{fig:sollistdiagramm}
 \end{figure}	
 
 \section{Projektdurchführung}
@@ -464,7 +474,7 @@ Diese Klasse wird als AsyncTask ausgeführt. Dabei wird eine Datenbankaktualisie
 \vspace{0,3 cm}
 
 \textbf{createGameDB.}
-Mithilfe des $"$create$\_$new$\_$game.php$"$ erstellt diese Klasse ein neues Spiel in der Datenbank. Dabei fügt sie ein neues Spiel in die $\_$GAME$-$Tabelle ein und erstellt dazu Einträge in der player$\_$game$-$Tabelle [3.3 Abbildung 1]. Des weiteren werden die Phasen des Spiels angelegt.
+Mithilfe des $"$create$\_$new$\_$game.php$"$ erstellt diese Klasse ein neues Spiel in der Datenbank. Dabei fügt sie ein neues Spiel in die $\_$GAME$-$Tabelle ein und erstellt dazu Einträge in der player$\_$game$-$Tabelle [Kapitel 3.3, Abbildung 3]. Des weiteren werden die Phasen des Spiels angelegt.
 
 \vspace{0,3 cm}
 
@@ -621,16 +631,25 @@ Holt Informationen zum Status einer Abstimmung.
 
 		
 \subsection{Datenbankschema}
+
+
+\begin{figure}[h] 
+  \centering
+     \includegraphics[height = 10 cm, width = 14cm]{DB_Schema}
+  \caption{Datenbankschema}
+  \label{fig:datenbankschema}
+\end{figure}
 			
-Im folgenden werden die Tabellen aus Abbildung 1 kurz erläutert:
+Im folgenden werden die Tabellen aus Abbildung \ref{datenbankschema} kurz erläutert:
 \\		
 		
 \textbf{\textit{player$\_$game.}}
-Diese Tabelle ordnet einem Spieler ein Spiel zu und speichert, welche Rolle dieser verkörpert (\textit{role}). Der \textit{ready}$-$Wert ist für den Beginn des Spiels gedacht. Sobald alle Spieler dem Spiel beigetreten und bereit sind (\textit{ready == 1}) beginnt das Spiel. Bei den Abstimmungen wird in der \textit{numOfVotes} gespeichert, wie oft für einen Spieler abgestimmt wurde.
+Diese Tabelle ordnet einem Spieler ein Spiel zu und speichert, welche Rolle dieser verkörpert (\textit{role}). Der \textit{ready}$-$Wert ist für den Beginn des Spiels gedacht. Sobald alle Spieler dem Spiel beigetreten und bereit sind (\textit{ready == 1}) beginnt das Spiel. Bei den Abstimmungen wird in der \textit{numOfVotes} gespeichert, wie oft für einen Spieler abgestimmt wurde. Mithilfe dieses Wertes lässt sich in Erfahrung bringen, ob bereits alle Spieler, die voten können, gevotet haben.
+Mittels der gameID kann jede playerID einem Spiel zugeordnet werden.
 \\
 
 \textbf{\textit{$\_$GAME.}}
-In dieser Tabelle werden Spiel-spezifische Informationen gespeichert. Sie enthält den Tränke-Vorrat der Hexe (\textit{poison, heal}) und die aktuell zum Tode verurteilten (\textit{victimDor, victimWer, $\dots$}).
+In dieser Tabelle werden Spiel-spezifische Informationen gespeichert. Ein Spiel wird durch die eindeutige gameID identifiziert. Die Tabelle speichert außerdem den Tränke-Vorrat der Hexe (\textit{poison, heal}) und die aktuell zum Tode verurteilten (\textit{victimDor, victimWer, $\dots$}), da dies globale Spielvariablen sind.
 \\
 
 \textbf{\textit{$\_$PHASES.}}
@@ -638,13 +657,9 @@ Hier werden zu jedem Spiel die notwendigen Spielphasen gespeichert. Abhängig vo
 \\
 
 \textbf{\textit{$\_$PLAYER.}}
-Diese Tabelle enthält alle Spieler-Accounts. Der \textit{login}-Wert gibt an, ob ein Spieler auf einem Gerät angemeldet ist. So wird sicher gestellt, dass jeder Spieler nur auf einem Gerät angemeldet sein kann.  
+Diese Tabelle enthält alle Spieler-Accounts. Jeder Spieler erhält bei der Erstellung seines Accounts eine eindeutige playerID. Der \textit{login}-Wert gibt an, ob ein Spieler auf einem Gerät angemeldet ist. So wird sicher gestellt, dass jeder Spieler nur auf einem Gerät angemeldet sein kann. \\
 
-\begin{figure}[] 
-  \centering
-     \includegraphics[height = 10 cm, width = 14cm]{DB_Schema}
-  \caption{Datenbankschema}
-\end{figure}	
+Entstehung des Datenbankschemas:
 
 \end{document}
 
