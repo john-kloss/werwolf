@@ -7,6 +7,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{pdfpages}
 
+\usepackage{verbatim}
+\usepackage{comment}
+
 \title{Dokumentation "FINd die Werwölfe"}
 \author{Alexandra Koch, Gina Seckendorf, Jonathan Kloss}
 
@@ -24,15 +27,10 @@
 	\subsection{Spielbeschreibung}
 Als Vorlage für die App dient das Spiel $"$Die Werwölfe von Düsterwald$"$ von Philippe des Phalliéres und Hervé Marly. Thematisch geht es darum, dass das kleine Dörfchen Düsterwald von Werwölfen heimgesucht wird. Die Gruppe der Bürger versucht die Wölfe, die sich als Bürger getarnt haben, zu entlarven. Dagegen versuchen die Wölfe als einzige zu überleben und Widersacher auszuschalten.
 
-\subsection{Ablaufdiagramm}
+\begin{center}
+\includegraphics[width = 9 cm]{ablauf.png}
+\end{center}
 
-\begin{figure}[h]
-	\includegraphics[scale=0.4]{ablauf.png}
-	\caption{Ablaufdigramm}
-	\label{fig:ablaufdiagramm}
-
-\end{figure}
-	
 
 		\subsubsection{Vorbereitung}
 Der Spielleiter mischt alle Charakterkarten und teilt an jeden Spieler verdeckt eine davon aus. Die Spieler schauen sich ihre Karte an und erkennen nun, ob sie einen Werwolf, einen einfachen Dorfbewohner oder eine Sonderrolle verkörpern. Danach ruft der Spielleiter zur ersten Nacht aus und das eigentliche Spiel kann beginnen.
@@ -125,18 +123,19 @@ Die Geräte stehen in ständiger Verbindung zur Datenbank, um zu wissen in welch
 \begin{itemize}
 
 \item \textbf{Aufgabenplanung}   
-
+$\rightarrow$ Aufbau der App überlegen und Aufgaben im Projektplan festlegen und verteilen
 
 \item \textbf{Modellierung der App} 
+$\rightarrow$ Anforderungen, Ablauf und Aufbau der App genau festlegen
 
 \item \textbf{Recherche} \\
 $\rightarrow$ Informieren über die Techniken und Werkzeuge zur Umsetzung der App
 
 \item \textbf{Implementierung} \\
-$\rightarrow$ Umsetzung aller Funktionen in Android$-$Studio
+$\rightarrow$ Umsetzung aller Anforderungen in Android-Studio
 
 \item \textbf{Datenbank} \\
-$\rightarrow$ Implementierung der php-Files zur Kommunikation zwischen Datenbank und Android$-$Geräten
+$\rightarrow$ Implementierung der php-Files zur Kommunikation zwischen Datenbank und Android-Geräten
 
 \item \textbf{Design} \\
 $\rightarrow$ optische und akustische Gestaltung der App
@@ -144,7 +143,8 @@ $\rightarrow$ optische und akustische Gestaltung der App
 \item \textbf{Dokumentation} \\
 $\rightarrow$ Erklärung für Entwickler und Benutzer wie die App funktioniert
 
-\item \textbf{Debuggen} 
+\item \textbf{Debugging} 
+$\rightarrow$ App ausprobieren und mithilfe von Log-Einträgen Fehler beseitigen
 
 \item \textbf{Abschlusspräsentation} 
 
@@ -153,19 +153,11 @@ $\rightarrow$ Erklärung für Entwickler und Benutzer wie die App funktioniert
 
 	\subsection{Projektplan}
 
-Der Projektplan wurde im Laufe des Projekts mehrmals angepasst. Im folgenden ist die letzte Version aufgeführt: 
+Der Projektplan liefert einen Überblick über den Stand des Projekts. Er beinhaltet Aufgaben mit zugehörigen Deadlines und von wem diese bearbeitet werden sollten. Der Plan wurde im Laufe des Projektes mehrmals angepasst, um Aufgaben genauer und detaillierter zu formulieren oder aufzuteilen und um ihn an Verzögerungen im Projektverlauf anzupassen. Im folgenden ist die letzte Version des Projektplans aufgeführt: 
 
 \includepdf[pages=-]{Projektplan}
 
 
-	\subsection{Soll-Ist-Diagramm} 
-
-\begin{figure}[h] 
-  \centering
-     \includegraphics[height = 10 cm, width = 14cm]{soll_ist_diagramm.png}
-  \caption{Soll-Ist-Diagramm}
-  \label{fig:sollistdiagramm}
-\end{figure}	
 
 \section{Projektdurchführung}
 
@@ -174,9 +166,15 @@ Die Datenbank wurde auf den Uniservern angelegt. Dazu wurden per SSH die benöti
 Der Zugriff auf die Datenbank erfolgte anschließend über phpMyAdmin. Dort wurden die benötigten Tabellen angelegt.
 		
 	\subsection{Klassendiagramm}
-		
-\includegraphics[width = 15 cm, height = 8 cm]{WUML}
-		
+		 
+\includegraphics[width = \textwidth]{classdiagramm} \newline \newline	
+Das Klassendiagramm enthält nur die $"$wichtigsten$"$ Klassen, d.h. die Activities die in der App sichtbar werden.
+\\ Über die \textit{LoginRegistrationActivity} kann ein Spieler sich einen Account anlegen oder sich mit einem bereits bestehenden Account einloggen. Über beide Varianten gelangt er schließlich zur \textit{MenuActivity}. Diese ist eine Art "Kreuzung" über die man sich die Spielregeln ansehen ($\rightarrow$\textit{RulesActivity}), ein Spiel starten ($\rightarrow$\textit{GameSetupActivity}), einem Spiel beitreten ($\rightarrow$\textit{JoinGameActivity}) oder seine Account-Einstellungen verändern kann ($\rightarrow$\textit{SettingsActivity}).
+Hat man ein Spiel erstellt so kommt man zur \textit{QRCodeActivity}, welche einen Code zeigt, der von Spielern gescannt werden kann, die einem Spiel beitreten wollen.
+Die \textit{GetRole} zeigt jedem Spieler seine Rolle und die dazugehörige Rollenbeschreibung. Sind alle bereit, dient die \textit{LetsPlayActivity} zur Spieleinleitung.
+Jeder Phase des Spiels wurde eine Activity zugeordnet. So lassen sich später einfacher Rollen aus Erweiterungen des Spiels hinzufügen. \textit{Dieb-, Amor-} und \textit{LoverActivity} werden nur einmal nacheinander aufgerufen. Die anderen Phasen-Activities werden nach und nach immer wieder aufgerufen. Dies geschieht solange, bis die Bedingung für das Spielende erreicht wurde und die GameOverActivity aufgerufen wird. Von hier aus gelangt man wieder zurück ins Menü (\textit{MenuActivity}).
+\\ Eine ausführliche Beschreibung der Klassen folgt in Abschnitt 3.2.
+
 		
 	\subsection{Beschreibung der Klassen}
 		
@@ -347,123 +345,268 @@ Diese Klasse kümmert sich um das Abspielen des richtigen Audios zur richtigen Z
 \textbf{databaseCon.}
 Diese Klasse enthält verschiedene Funktionen, die für die Kommunikation bzw. den Datenaustausch mit der Datenbank zuständig sind:
 
-\begin{description}
+\vspace{-0.1 cm}
 
-\item[registration]\hfill \\
+\begin{itemize}
+
+\item \begin{verbatim}
+boolean registration(String name, String email, String pw)
+\end{verbatim} 
+\vspace{-0.2 cm}
 Registrierung bei erster Spielnutzung $\rightarrow$ Erstellung eines Useraccounts in der Datenbank
 
-\item[login]\hfill \\
-Login bei erneuterm Öffnunen der App $\rightarrow$ Abfrage der USerdaten von Datenbank
+\newpage
+\item \begin{verbatim}
+boolean login(String email, String pw)
+\end{verbatim} 
+\vspace{-0.2 cm}
+Login bei erneutem Öffnen der App $\rightarrow$ Abfrage der Userdaten von Datenbank
 
-\item[deleteAccount]\hfill \\
+\item \begin{verbatim}
+boolean deleteAccount()
+\end{verbatim}
+\vspace{-0.2 cm}
 Account löschen $\rightarrow$ Löschen der Userdaten aus Datenbank
 
-\item[setImage]\hfill \\
-Bild in Datanbank speichern.
+\item \begin{verbatim}
+void setImage(Bitmap bitmap)
+\end{verbatim}
+\vspace{-0.2 cm}
+Bild in Datenbank speichern.
 
-\item[getImage]\hfill \\
+\item \begin{verbatim}
+Bitmap getImage()
+\end{verbatim}
+\vspace{-0.2 cm}
 Bild aus Datenbank abfragen.
 
-\item[getImageAsString]\hfill \\
+\item \begin{verbatim}
+String getImagesAsString(int playerID)
+\end{verbatim}
+\vspace{-0.2 cm}
 Bild wird als String in globalen Variablen gespeichert.
 
-\item[getReady]\hfill \\
+\item \begin{verbatim}
+int getReady()
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage der ready$-$Variable aus Datenbank $\rightarrow$ für Spielstart (LetsPlayActivity)
 
-\item[getPlayerInGame]\hfill \\
+\item \begin{verbatim}
+int getPlayerInGame()
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage aus Datenbank, wie viele Spieler bereits beigetreten sind 
 
-\item[resetOneGame]\hfill \\
+\item \begin{verbatim}
+void resetOneGame()
+\end{verbatim}
+\vspace{-0.2 cm}
 Löschen eines Spieles.
 
-\item[getNumPlayers]\hfill \\
+\item \begin{verbatim}
+int getNumPlayers()
+\end{verbatim}
+\vspace{-0.2 cm}
 Anzahl der Spieler im Spiel global speichern.
 
-\item[getPlayerIDs]\hfill \\
+\item \begin{verbatim}
+void getPlayerIDs()
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage und globaler Speicherung der PlayerIDs im Spiel.
 
-\item[getPlayerNames]\hfill \\
+\item \begin{verbatim}
+void getPlayerNames()
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage und globale Speicherung der Spielernamen im Spiel.
 
-\item[getPlayerAlive]\hfill \\
+\item \begin{verbatim}
+int[] getPlayerAlive()
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage, welche Spieler noch am Leben sind.
 
-\item[alive]\hfill \\
+\item \begin{verbatim}
+boolean alive(int playerID)
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage, ob ein spezieller Spieler noch am Leben ist.
 
-\item[getName]\hfill \\
+\item \begin{verbatim}
+String getName()
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage des Namens eines speziellen Spielers.
 
-\item[DiebGetRoles]\hfill \\
+\item \begin{verbatim}
+String[] DiebGetRoles()
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage der Rolle, welche am Ende noch übrig sind $\rightarrow$ Wahl des Diebes.
 
-\item[setVictims]\hfill \\
+\item \begin{verbatim}
+void setVictims(int victimID)
+\end{verbatim}
+\vspace{-0.2 cm}
 Victim$-$Variablen in Datenbank setzen.
 
-\item[Werwolf]\hfill \\
+\item \begin{verbatim}
+int[] Werwolf(String action)
+\end{verbatim}
+\vspace{-0.2 cm}
 a  Wie viele Werwölfe haben bereits gevoted?  \\
 b  abstimmen \\
 c  Anzahl lebender Werwölfe ermitteln
 
-\item[Seherin]\hfill \\
+\item \begin{verbatim}
+String Seherin(int playerID)
+\end{verbatim}
+\vspace{-0.2 cm}
 Ermittelt die Gesinnung eines ausgewählten Spielers.
 
-\item[Hexe]\hfill \\
+\item \begin{verbatim}
+String Hexe(String magic)
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage und Anzeige des Werwolfopfers, Nutzung der Tränke
 
-\item[Tag]\hfill \\
+\item \begin{verbatim}
+int[] Tag(String action)
+\end{verbatim}
+\vspace{-0.2 cm}
 a  Wie viele Spieler haben bereits gevoted? \\
 b  abstimmen
 
-\item[getLover]\hfill \\
+\item \begin{verbatim}
+String getLover(int id)
+\end{verbatim}
+\vspace{-0.2 cm}
 Abfrage und Anzeige, ob man $"$in jemanden verliebt ist$"$.
 
-\item[isLogged]\hfill \\
-Abfrage, ob Spieler bereits auf anderem Gerät eingelogged ist.
+\item \begin{verbatim}
+boolean isLogged(int playerID)
+\end{verbatim}
+\vspace{-0.2 cm}
+Abfrage, ob Spieler bereits auf anderem Gerät eingeloggt ist.
 
-\end{description}
+\end{itemize}
 
 \vspace{0,3 cm}
 
 \textbf{GlobalVariables.}
 Die Klasse \textit{GlobalVariables} enthält diverse globale Variablen, sowie deren \textit{Getter} und \textit{Setter}, um eine Parameterübergabe zwischen Activitys und java$-$Klassen zu vereinfachen:
 
-\begin{description}
-\item[ownPlayerID]\hfill \\ $\rightarrow$ speichert eigene PlayerID (für Login, Rollenabfrage, Spiel)
-\item[ownRole]\hfill \\ $\rightarrow$ speichert eigene Rolle
-\item[gameID]\hfill \\ $\rightarrow$ speichert aktuelle GameID
-\item[numPlayers]\hfill \\ $\rightarrow$ speichert Spieleranzahl des aktuellen Spiels
-\item[numPlayersAlive]\hfill \\ $\rightarrow$ speichert aktuelle Anzahl an "lebenden" Spielern des aktuellen Spiels
-\item[PlayerIDs]\hfill \\ $\rightarrow$ Array aller PlayerIDs des Spiels
-\item[PlayerNames]\hfill \\ $\rightarrow$ Array aller Spielernamen des Spiels
-\item[cards]\hfill \\ $\rightarrow$ Array der gemischten Rollenkarten des aktuellen Spiels $\dashrightarrow$ wird nur vom Spielleiter gebraucht $\dashrightarrow$ nötig zur Spielerstellung (Einfügen des Spiels in die Datenbank)
-\item[currentlySelectedPlayer]\hfill \\ $\rightarrow$ Button des aktuell ausgewählten Spielers
-\item[Phases]\hfill \\ $\rightarrow$ Array, das alle Spiel$-$relevanten Phasen enthält $\dashrightarrow$ wird nur vom Spielleiter gebraucht $\dashrightarrow$ nötig zur Spielerstellung
-\item[currentPhase]\hfill \\ $\rightarrow$ String, der aktuelle Phase wiedergibt $\dashrightarrow$ überwiegend zur Aktionsentscheidung in der popup-Klasse nötig
-\item[nextPhase]\hfill \\ $\rightarrow$ String, der nächste Phase wiedergibt $\dashrightarrow$ nötig für Audios
-\item[currentContext]\hfill \\ $\rightarrow$ speichert aktuelle Activity $\dashrightarrow$ ermöglicht den Aufruf einer Activity aus einer java-Klasse heraus
-\item[sharedPrefContext]\hfill \\ $\rightarrow$ speichert Activity, in der sharedPreferences angewandt wird (nötig für Logout)
-\item[winner]\hfill \\ $\rightarrow$ String, der den Gewinner enthält
-\item[spielleiter]\hfill \\ $\rightarrow$ Boolean, welcher angibt, ob das Gerät Spielleitergerät ist, oder nicht $\dashrightarrow$ nötig zum Abspielen der Audios $\/$ Aufruf der killDB
-\item[images]\hfill \\ $\rightarrow$ String$-$Array, welches die Base64$-$Strings der Bilder der Spieler des aktuellen Spiels speichert.
-\item[DiebChoosen]\hfill \\ $\rightarrow$ Boolean, welcher angibt, ob der Dieb als Sonderrolle ausgewählt wurde $\dashrightarrow$ denn wenn ja, müssen zwei weitere Karten ins \textit{cards}$-$Array aufgenommen werden $+$ wenn der Dieb ausgewählt wurde und es nur einen Werwolf gibt, darf dieser beim Mischen nicht eine der beiden letzten Karten werden (\textit{GameSetupActivity} $\dashrightarrow$ \textit{calculateGame} $+$ in der \textit{QRCodeActivity} wird ermittelt, wie viele Spieler dem Spiel bereits beigetreten sind (mit der Hilfe der Methode \textit{getPlayerInGame} der Klasse \textit{databaseCon}) somit muss bekannt sein, dass die letzten beiden Einträge frei bleiben werden.
-\item[lover1]\hfill \\ $\rightarrow$ speichert den Button des Spielers, welchen Amor als lover1 ausgewählt hat
-\item[lover2]\hfill \\ $\rightarrow$ speichert den Button des Spielers, welchen Amor als lover2 ausgewählt hat 
-\item[OK]\hfill \\ $\rightarrow$ Button, welcher von Amor betätigt wird, wenn er seine Wahl getroffen hat $\dashrightarrow$ global, da der Button erst auswählbar wird, wenn Amor genau zwei Spieler ausgewählt hat. Die auf die Button angewendeten Methoden finden allerdings in der GameActivity statt.
-\item[PopUpSeherinIdentity]\hfill \\ $\rightarrow$ AlertDialog, welcher das PopUp$-$Info$-$Fenster darstellt, welches die Gesinnung eines Spielers zeigt. Da die Fenster nur in der \textit{OnCreate}$-$Methode einer Activity erstellt werden können, es in diesem Fall jedoch in der \textit{getIdentity}$-$Methode der \textit{SeherinActivity} erst den entsprechenden Text erhält, muss es global definiert werden.
-\item[JaegerDies]\hfill \\ $\rightarrow$ Boolean, welcher zu Beginn eines jeden Spiels auf $"$false$"$ gesetzt wird. Er zeigt an, ob der Jäger ein Opfer der Nacht $\/$ des Tages war $\dashrightarrow$ ist dies der Fall, so wird in der \textit{ showVictimActivity} noch nicht die \textit{killDB} nach Ablaufen der für die Anzeige vorgesehenen Zeit aufgerufen, sondern erst die \textit{JaegerActivity} aufgerufen. Des weiteren wird die Variable erneut in der \textit{showVictimActivity} gebraucht, um die Opfer der Nacht $\/$ des Tages und das$\/$die Opfer des Jägers entsprechend anzeigen zu können (es muss bekannt sein, welche Textfelder angezeigt werden sollen $-$ so gibt es eines speziell für das$\/$die Jägeropfer)
-\item[victimJaeger]\hfill \\ $\rightarrow$ Boolean, der das Opfer des Jägers beinhaltet. Wird genutzt, damit die entsprechende Aktion nur ausgeführt wird, wenn der Jäger ein Opfer gewählt hat.
-\end{description}
+\begin{itemize}
+
+\item \begin{verbatim} ownPlayerID 
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert eigene PlayerID (für Login, Rollenabfrage, Spiel)
+\item \begin{verbatim} ownRole 
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert eigene Rolle
+\item\begin{verbatim} gameID]
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert aktuelle GameID
+\item \begin{verbatim} numPlayers
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert Spieleranzahl des aktuellen Spiels
+\item \begin{verbatim} numPlayersAlive
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert aktuelle Anzahl an $"$lebenden$"$ Spielern des aktuellen Spiels
+\item \begin{verbatim} PlayerIDs
+\end{verbatim} \\
+\vspace{-0.2 cm} 
+$\rightarrow$ Array aller PlayerIDs des Spiels
+\item \begin{verbatim} PlayerNames
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Array aller Spielernamen des Spiels
+\item \begin{verbatim} cards
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Array der gemischten Rollenkarten des aktuellen Spiels $\dashrightarrow$ wird nur vom Spielleiter gebraucht $\dashrightarrow$ nötig zur Spielerstellung (Einfügen des Spiels in die Datenbank)
+\item \begin{verbatim} currentlySelectedPlayer
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Button des aktuell ausgewählten Spielers
+\item \begin{verbatim} Phases
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Array, das alle Spiel$-$relevanten Phasen enthält $\dashrightarrow$ wird nur vom Spielleiter gebraucht $\dashrightarrow$ nötig zur Spielerstellung
+\item \begin{verbatim} currentPhase
+\end{verbatim} \\ 
+\vspace{-0.2 cm}
+$\rightarrow$ String, der aktuelle Phase wiedergibt $\dashrightarrow$ überwiegend zur Aktionsentscheidung in der popup-Klasse nötig
+\item \begin{verbatim} nextPhase
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ String, der nächste Phase wiedergibt $\dashrightarrow$ nötig für Audios
+\item \begin{verbatim} currentContext
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert aktuelle Activity $\dashrightarrow$ ermöglicht den Aufruf einer Activity aus einer java-Klasse heraus
+\item \begin{verbatim} sharedPrefContext
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert Activity, in der sharedPreferences angewandt wird (nötig für Logout)
+\item \begin{verbatim} winner
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ String, der den Gewinner enthält
+\item \begin{verbatim} spielleiter
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Boolean, welcher angibt, ob das Gerät Spielleitergerät ist, oder nicht $\dashrightarrow$ nötig zum Abspielen der Audios / Aufruf der killDB
+\item \begin{verbatim} images
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ String$-$Array, welches die Base64$-$Strings der Bilder der Spieler des aktuellen Spiels speichert.
+\item \begin{verbatim} DiebChoosen
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Boolean, welcher angibt, ob der Dieb als Sonderrolle ausgewählt wurde $\dashrightarrow$ denn wenn ja, müssen zwei weitere Karten ins \textit{cards}$-$Array aufgenommen werden $+$ wenn der Dieb ausgewählt wurde und es nur einen Werwolf gibt, darf dieser beim Mischen nicht eine der beiden letzten Karten werden (\textit{GameSetupActivity} $\dashrightarrow$ \textit{calculateGame} $+$ in der \textit{QRCodeActivity} wird ermittelt, wie viele Spieler dem Spiel bereits beigetreten sind (mit der Hilfe der Methode \textit{getPlayerInGame} der Klasse \textit{databaseCon}) somit muss bekannt sein, dass die letzten beiden Einträge frei bleiben werden.
+\item \begin{verbatim} lover1
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert den Button des Spielers, welchen Amor als lover1 ausgewählt hat
+\item \begin{verbatim} lover2
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ speichert den Button des Spielers, welchen Amor als lover2 ausgewählt hat 
+\item \begin{verbatim} OK
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Button, welcher von Amor betätigt wird, wenn er seine Wahl getroffen hat $\dashrightarrow$ global, da der Button erst auswählbar wird, wenn Amor genau zwei Spieler ausgewählt hat. Die auf die Button angewendeten Methoden finden allerdings in der GameActivity statt.
+\item \begin{verbatim} PopUpSeherinIdentity
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ AlertDialog, welcher das PopUp$-$Info$-$Fenster darstellt, welches die Gesinnung eines Spielers zeigt. Da die Fenster nur in der \textit{OnCreate}$-$Methode einer Activity erstellt werden können, es in diesem Fall jedoch in der \textit{getIdentity}$-$Methode der \textit{SeherinActivity} erst den entsprechenden Text erhält, muss es global definiert werden.
+\item \begin{verbatim} JaegerDies
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Boolean, welcher zu Beginn eines jeden Spiels auf $"$false$"$ gesetzt wird. Er zeigt an, ob der Jäger ein Opfer der Nacht $\/$ des Tages war $\dashrightarrow$ ist dies der Fall, so wird in der \textit{ showVictimActivity} noch nicht die \textit{killDB} nach Ablaufen der für die Anzeige vorgesehenen Zeit aufgerufen, sondern erst die \textit{JaegerActivity} aufgerufen. Des weiteren wird die Variable erneut in der \textit{showVictimActivity} gebraucht, um die Opfer der Nacht $\/$ des Tages und das$\/$die Opfer des Jägers entsprechend anzeigen zu können (es muss bekannt sein, welche Textfelder angezeigt werden sollen $-$ so gibt es eines speziell für das$\/$die Jägeropfer)
+\item \begin{verbatim} victimJaeger
+\end{verbatim} \\
+\vspace{-0.2 cm}
+$\rightarrow$ Boolean, der das Opfer des Jägers beinhaltet. Wird genutzt, damit die entsprechende Aktion nur ausgeführt wird, wenn der Jäger ein Opfer gewählt hat.
+\end{itemize}
   
+\begin{comment}
 \vspace{0,3 cm}
 
-\textbf{JSONParser.}\\
-Der JSONParser erzeugt eine URL, welche eine Datenbankabfrage ermöglicht.
-Außerdem werden empfangene JSON-Objekte in entsprechende Strings umgewandelt.
+\textbf{JSONParser.}
 
 \vspace{0,3 cm}
 
 \textbf{popup.}
+\end{comment}
 
 
 		\subsubsection{Database}
@@ -474,7 +617,7 @@ Diese Klasse wird als AsyncTask ausgeführt. Dabei wird eine Datenbankaktualisie
 \vspace{0,3 cm}
 
 \textbf{createGameDB.}
-Mithilfe des $"$create$\_$new$\_$game.php$"$ erstellt diese Klasse ein neues Spiel in der Datenbank. Dabei fügt sie ein neues Spiel in die $\_$GAME$-$Tabelle ein und erstellt dazu Einträge in der player$\_$game$-$Tabelle [Kapitel 3.3, Abbildung 3]. Des weiteren werden die Phasen des Spiels angelegt.
+Mithilfe des $"$create$\_$new$\_$game.php$"$ erstellt diese Klasse ein neues Spiel in der Datenbank. Dabei fügt sie ein neues Spiel in die $\_$GAME$-$Tabelle ein und erstellt dazu Einträge in der player$\_$game$-$Tabelle [3.3 Abbildung 1]. Des weiteren werden die Phasen des Spiels angelegt.
 
 \vspace{0,3 cm}
 
@@ -497,7 +640,7 @@ Diese Klasse wird als AsyncTask ausgeführt. Jedes Gerät, das gerade nicht $"$a
 \textbf{HexeDB}
 Wenn die Hexe sich dazu entschließt einen ihrer Tränke zu verwenden, wird dies durch diese Klasse in der Datenbank gespeichert \textit{updateHexe.php}.
 
-\vspace{0,3 cm}
+\newpage
 	
 \textbf{JaegerDB.}
 Diese Klasse speichert das Opfer des Jägers in der Datenbank. (\textit{setVictims.php})
@@ -526,10 +669,12 @@ Am Ende jeder Phase wird vom gerade $"$aktiven$"$ Gerät die Klasse \textit{setN
 
 \textbf{setReadyDB.}
 Diese Klasse ändert den \textit{ready}$-$Eintrag eines Spielers in der Datenbank (in der player$\_$game$-$Tabelle), sobald dieser in der \textit{GetRole} auf den \textit{bereit}$-$Button gedrückt hat.
-	
+
+\begin{comment}	
 \vspace{0,3 cm}	
 	
 \textbf{showVictimDB.}
+\end{comment}
 
 
 		\subsubsection{php-Files}
@@ -628,28 +773,19 @@ Holt Informationen zum Status einer Abstimmung.
 
 
 \end{description}
-
+		
 		
 \subsection{Datenbankschema}
-
-
-\begin{figure}[h] 
-  \centering
-     \includegraphics[height = 10 cm, width = 14cm]{DB_Schema}
-  \caption{Datenbankschema}
-  \label{fig:datenbankschema}
-\end{figure}
-			
-Im folgenden werden die Tabellen aus Abbildung \ref{datenbankschema} kurz erläutert:
-\\		
+						
+Auch das Datenbankschema stand in seiner endgültigen Form nicht von Anfang an fest. Es entwickelte sich erst im Laufe der Implementierung, als deutlicher wurde, welche Werte und Tabellen notwendig sind.		
+\\	
 		
 \textbf{\textit{player$\_$game.}}
-Diese Tabelle ordnet einem Spieler ein Spiel zu und speichert, welche Rolle dieser verkörpert (\textit{role}). Der \textit{ready}$-$Wert ist für den Beginn des Spiels gedacht. Sobald alle Spieler dem Spiel beigetreten und bereit sind (\textit{ready == 1}) beginnt das Spiel. Bei den Abstimmungen wird in der \textit{numOfVotes} gespeichert, wie oft für einen Spieler abgestimmt wurde. Mithilfe dieses Wertes lässt sich in Erfahrung bringen, ob bereits alle Spieler, die voten können, gevotet haben.
-Mittels der gameID kann jede playerID einem Spiel zugeordnet werden.
+Diese Tabelle ordnet einem Spieler ein Spiel zu und speichert, welche Rolle dieser verkörpert (\textit{role}). Der \textit{ready}$-$Wert ist für den Beginn des Spiels gedacht. Sobald alle Spieler dem Spiel beigetreten und bereit sind (\textit{ready == 1}) beginnt das Spiel. Bei den Abstimmungen wird in der \textit{numOfVotes} gespeichert, wie oft für einen Spieler abgestimmt wurde.
 \\
 
 \textbf{\textit{$\_$GAME.}}
-In dieser Tabelle werden Spiel-spezifische Informationen gespeichert. Ein Spiel wird durch die eindeutige gameID identifiziert. Die Tabelle speichert außerdem den Tränke-Vorrat der Hexe (\textit{poison, heal}) und die aktuell zum Tode verurteilten (\textit{victimDor, victimWer, $\dots$}), da dies globale Spielvariablen sind.
+In dieser Tabelle werden Spiel-spezifische Informationen gespeichert. Sie enthält den Tränke-Vorrat der Hexe (\textit{poison, heal}) und die aktuell zum Tode verurteilten (\textit{victimDor, victimWer, $\dots$}).
 \\
 
 \textbf{\textit{$\_$PHASES.}}
@@ -657,9 +793,11 @@ Hier werden zu jedem Spiel die notwendigen Spielphasen gespeichert. Abhängig vo
 \\
 
 \textbf{\textit{$\_$PLAYER.}}
-Diese Tabelle enthält alle Spieler-Accounts. Jeder Spieler erhält bei der Erstellung seines Accounts eine eindeutige playerID. Der \textit{login}-Wert gibt an, ob ein Spieler auf einem Gerät angemeldet ist. So wird sicher gestellt, dass jeder Spieler nur auf einem Gerät angemeldet sein kann. \\
+Diese Tabelle enthält alle Spieler-Accounts. Der \textit{login}-Wert gibt an, ob ein Spieler auf einem Gerät angemeldet ist. So wird sicher gestellt, dass jeder Spieler nur auf einem Gerät angemeldet sein kann.
+\\
 
-Entstehung des Datenbankschemas:
+
+\includegraphics[width = \textwidth]{DB_Schema}
 
 \end{document}
 
